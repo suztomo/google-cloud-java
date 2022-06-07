@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (IndexEndpointServiceClient indexEndpointServiceClient =
  *     IndexEndpointServiceClient.create()) {
  *   IndexEndpointName name = IndexEndpointName.of("[PROJECT]", "[LOCATION]", "[INDEX_ENDPOINT]");
@@ -84,6 +86,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * IndexEndpointServiceSettings indexEndpointServiceSettings =
  *     IndexEndpointServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -95,6 +99,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * IndexEndpointServiceSettings indexEndpointServiceSettings =
  *     IndexEndpointServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * IndexEndpointServiceClient indexEndpointServiceClient =
@@ -128,7 +134,6 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * Constructs an instance of IndexEndpointServiceClient, using the given stub for making calls.
    * This is for advanced usage - prefer using create(IndexEndpointServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final IndexEndpointServiceClient create(IndexEndpointServiceStub stub) {
     return new IndexEndpointServiceClient(stub);
   }
@@ -144,7 +149,6 @@ public class IndexEndpointServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected IndexEndpointServiceClient(IndexEndpointServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -155,7 +159,6 @@ public class IndexEndpointServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public IndexEndpointServiceStub getStub() {
     return stub;
   }
@@ -175,6 +178,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
@@ -206,6 +211,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
@@ -237,6 +244,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   CreateIndexEndpointRequest request =
@@ -263,6 +272,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   CreateIndexEndpointRequest request =
@@ -290,6 +301,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   CreateIndexEndpointRequest request =
@@ -315,6 +328,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   IndexEndpointName name = IndexEndpointName.of("[PROJECT]", "[LOCATION]", "[INDEX_ENDPOINT]");
@@ -339,6 +354,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String name = IndexEndpointName.of("[PROJECT]", "[LOCATION]", "[INDEX_ENDPOINT]").toString();
@@ -362,6 +379,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   GetIndexEndpointRequest request =
@@ -387,6 +406,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   GetIndexEndpointRequest request =
@@ -412,6 +433,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
@@ -441,6 +464,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
@@ -468,6 +493,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   ListIndexEndpointsRequest request =
@@ -500,6 +527,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   ListIndexEndpointsRequest request =
@@ -531,6 +560,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   ListIndexEndpointsRequest request =
@@ -569,6 +600,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   IndexEndpoint indexEndpoint = IndexEndpoint.newBuilder().build();
@@ -600,6 +633,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   UpdateIndexEndpointRequest request =
@@ -625,6 +660,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   UpdateIndexEndpointRequest request =
@@ -651,6 +688,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   IndexEndpointName name = IndexEndpointName.of("[PROJECT]", "[LOCATION]", "[INDEX_ENDPOINT]");
@@ -678,6 +717,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String name = IndexEndpointName.of("[PROJECT]", "[LOCATION]", "[INDEX_ENDPOINT]").toString();
@@ -703,6 +744,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   DeleteIndexEndpointRequest request =
@@ -729,6 +772,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   DeleteIndexEndpointRequest request =
@@ -755,6 +800,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   DeleteIndexEndpointRequest request =
@@ -781,6 +828,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   IndexEndpointName indexEndpoint =
@@ -814,6 +863,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String indexEndpoint =
@@ -847,6 +898,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   DeployIndexRequest request =
@@ -875,6 +928,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   DeployIndexRequest request =
@@ -904,6 +959,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   DeployIndexRequest request =
@@ -931,6 +988,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   IndexEndpointName indexEndpoint =
@@ -965,6 +1024,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String indexEndpoint =
@@ -999,6 +1060,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   UndeployIndexRequest request =
@@ -1027,6 +1090,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   UndeployIndexRequest request =
@@ -1056,6 +1121,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   UndeployIndexRequest request =
@@ -1082,6 +1149,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   IndexEndpointName indexEndpoint =
@@ -1116,6 +1185,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   String indexEndpoint =
@@ -1150,6 +1221,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   MutateDeployedIndexRequest request =
@@ -1178,6 +1251,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   MutateDeployedIndexRequest request =
@@ -1208,6 +1283,8 @@ public class IndexEndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexEndpointServiceClient indexEndpointServiceClient =
    *     IndexEndpointServiceClient.create()) {
    *   MutateDeployedIndexRequest request =

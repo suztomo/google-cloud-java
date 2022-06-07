@@ -124,7 +124,6 @@ public class ExecutionsClient implements BackgroundResource {
    * Constructs an instance of ExecutionsClient, using the given stub for making calls. This is for
    * advanced usage - prefer using create(ExecutionsSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ExecutionsClient create(ExecutionsStub stub) {
     return new ExecutionsClient(stub);
   }
@@ -138,7 +137,6 @@ public class ExecutionsClient implements BackgroundResource {
     this.stub = ((ExecutionsStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ExecutionsClient(ExecutionsStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -148,7 +146,6 @@ public class ExecutionsClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ExecutionsStub getStub() {
     return stub;
   }

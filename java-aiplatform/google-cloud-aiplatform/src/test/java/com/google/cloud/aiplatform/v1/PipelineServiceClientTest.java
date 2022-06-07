@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -584,6 +584,8 @@ public class PipelineServiceClientTest {
             .setEncryptionSpec(EncryptionSpec.newBuilder().build())
             .setServiceAccount("serviceAccount1079137720")
             .setNetwork("network1843485230")
+            .setTemplateUri("templateUri1769633426")
+            .setTemplateMetadata(PipelineTemplateMetadata.newBuilder().build())
             .build();
     mockPipelineService.addResponse(expectedResponse);
 
@@ -642,6 +644,8 @@ public class PipelineServiceClientTest {
             .setEncryptionSpec(EncryptionSpec.newBuilder().build())
             .setServiceAccount("serviceAccount1079137720")
             .setNetwork("network1843485230")
+            .setTemplateUri("templateUri1769633426")
+            .setTemplateMetadata(PipelineTemplateMetadata.newBuilder().build())
             .build();
     mockPipelineService.addResponse(expectedResponse);
 
@@ -700,6 +704,8 @@ public class PipelineServiceClientTest {
             .setEncryptionSpec(EncryptionSpec.newBuilder().build())
             .setServiceAccount("serviceAccount1079137720")
             .setNetwork("network1843485230")
+            .setTemplateUri("templateUri1769633426")
+            .setTemplateMetadata(PipelineTemplateMetadata.newBuilder().build())
             .build();
     mockPipelineService.addResponse(expectedResponse);
 
@@ -752,6 +758,8 @@ public class PipelineServiceClientTest {
             .setEncryptionSpec(EncryptionSpec.newBuilder().build())
             .setServiceAccount("serviceAccount1079137720")
             .setNetwork("network1843485230")
+            .setTemplateUri("templateUri1769633426")
+            .setTemplateMetadata(PipelineTemplateMetadata.newBuilder().build())
             .build();
     mockPipelineService.addResponse(expectedResponse);
 

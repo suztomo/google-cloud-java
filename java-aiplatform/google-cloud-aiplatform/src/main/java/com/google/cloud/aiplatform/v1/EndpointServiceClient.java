@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package com.google.cloud.aiplatform.v1;
 
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
-import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
@@ -48,6 +47,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
  *   EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
  *   Endpoint response = endpointServiceClient.getEndpoint(name);
@@ -84,6 +85,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * EndpointServiceSettings endpointServiceSettings =
  *     EndpointServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -95,6 +98,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * EndpointServiceSettings endpointServiceSettings =
  *     EndpointServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * EndpointServiceClient endpointServiceClient =
@@ -127,7 +132,6 @@ public class EndpointServiceClient implements BackgroundResource {
    * Constructs an instance of EndpointServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer using create(EndpointServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final EndpointServiceClient create(EndpointServiceStub stub) {
     return new EndpointServiceClient(stub);
   }
@@ -143,7 +147,6 @@ public class EndpointServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected EndpointServiceClient(EndpointServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -154,7 +157,6 @@ public class EndpointServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public EndpointServiceStub getStub() {
     return stub;
   }
@@ -174,6 +176,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Endpoint endpoint = Endpoint.newBuilder().build();
@@ -203,6 +207,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Endpoint endpoint = Endpoint.newBuilder().build();
@@ -229,6 +235,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Endpoint endpoint = Endpoint.newBuilder().build();
@@ -268,6 +276,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Endpoint endpoint = Endpoint.newBuilder().build();
@@ -307,6 +317,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   CreateEndpointRequest request =
    *       CreateEndpointRequest.newBuilder()
@@ -333,6 +345,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   CreateEndpointRequest request =
    *       CreateEndpointRequest.newBuilder()
@@ -359,6 +373,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   CreateEndpointRequest request =
    *       CreateEndpointRequest.newBuilder()
@@ -384,6 +400,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   Endpoint response = endpointServiceClient.getEndpoint(name);
@@ -407,6 +425,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   Endpoint response = endpointServiceClient.getEndpoint(name);
@@ -429,6 +449,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   GetEndpointRequest request =
    *       GetEndpointRequest.newBuilder()
@@ -452,6 +474,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   GetEndpointRequest request =
    *       GetEndpointRequest.newBuilder()
@@ -474,6 +498,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (Endpoint element : endpointServiceClient.listEndpoints(parent).iterateAll()) {
@@ -501,6 +527,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (Endpoint element : endpointServiceClient.listEndpoints(parent).iterateAll()) {
@@ -525,6 +553,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   ListEndpointsRequest request =
    *       ListEndpointsRequest.newBuilder()
@@ -555,6 +585,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   ListEndpointsRequest request =
    *       ListEndpointsRequest.newBuilder()
@@ -586,6 +618,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   ListEndpointsRequest request =
    *       ListEndpointsRequest.newBuilder()
@@ -623,6 +657,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   Endpoint endpoint = Endpoint.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -648,6 +684,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   UpdateEndpointRequest request =
    *       UpdateEndpointRequest.newBuilder()
@@ -672,6 +710,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   UpdateEndpointRequest request =
    *       UpdateEndpointRequest.newBuilder()
@@ -696,6 +736,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   endpointServiceClient.deleteEndpointAsync(name).get();
@@ -720,6 +762,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   endpointServiceClient.deleteEndpointAsync(name).get();
@@ -742,6 +786,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   DeleteEndpointRequest request =
    *       DeleteEndpointRequest.newBuilder()
@@ -766,6 +812,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   DeleteEndpointRequest request =
    *       DeleteEndpointRequest.newBuilder()
@@ -790,6 +838,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   DeleteEndpointRequest request =
    *       DeleteEndpointRequest.newBuilder()
@@ -813,6 +863,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   EndpointName endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   DeployedModel deployedModel = DeployedModel.newBuilder().build();
@@ -857,6 +909,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   DeployedModel deployedModel = DeployedModel.newBuilder().build();
@@ -901,6 +955,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   DeployModelRequest request =
    *       DeployModelRequest.newBuilder()
@@ -927,6 +983,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   DeployModelRequest request =
    *       DeployModelRequest.newBuilder()
@@ -954,6 +1012,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   DeployModelRequest request =
    *       DeployModelRequest.newBuilder()
@@ -979,6 +1039,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   EndpointName endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   String deployedModelId = "deployedModelId-1817547906";
@@ -1020,6 +1082,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   String endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   String deployedModelId = "deployedModelId-1817547906";
@@ -1061,6 +1125,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   UndeployModelRequest request =
    *       UndeployModelRequest.newBuilder()
@@ -1088,6 +1154,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   UndeployModelRequest request =
    *       UndeployModelRequest.newBuilder()
@@ -1116,6 +1184,8 @@ public class EndpointServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (EndpointServiceClient endpointServiceClient = EndpointServiceClient.create()) {
    *   UndeployModelRequest request =
    *       UndeployModelRequest.newBuilder()

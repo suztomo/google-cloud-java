@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,6 +51,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (SpecialistPoolServiceClient specialistPoolServiceClient =
  *     SpecialistPoolServiceClient.create()) {
  *   SpecialistPoolName name =
@@ -89,6 +91,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * SpecialistPoolServiceSettings specialistPoolServiceSettings =
  *     SpecialistPoolServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -100,6 +104,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * SpecialistPoolServiceSettings specialistPoolServiceSettings =
  *     SpecialistPoolServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * SpecialistPoolServiceClient specialistPoolServiceClient =
@@ -133,7 +139,6 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * Constructs an instance of SpecialistPoolServiceClient, using the given stub for making calls.
    * This is for advanced usage - prefer using create(SpecialistPoolServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final SpecialistPoolServiceClient create(SpecialistPoolServiceStub stub) {
     return new SpecialistPoolServiceClient(stub);
   }
@@ -149,7 +154,6 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected SpecialistPoolServiceClient(SpecialistPoolServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -160,7 +164,6 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public SpecialistPoolServiceStub getStub() {
     return stub;
   }
@@ -180,6 +183,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
@@ -211,6 +216,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
@@ -242,6 +249,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   CreateSpecialistPoolRequest request =
@@ -269,6 +278,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   CreateSpecialistPoolRequest request =
@@ -296,6 +307,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   CreateSpecialistPoolRequest request =
@@ -322,6 +335,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   SpecialistPoolName name =
@@ -349,6 +364,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   String name =
@@ -373,6 +390,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   GetSpecialistPoolRequest request =
@@ -398,6 +417,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   GetSpecialistPoolRequest request =
@@ -423,6 +444,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
@@ -452,6 +475,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
@@ -479,6 +504,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   ListSpecialistPoolsRequest request =
@@ -510,6 +537,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   ListSpecialistPoolsRequest request =
@@ -540,6 +569,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   ListSpecialistPoolsRequest request =
@@ -577,6 +608,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   SpecialistPoolName name =
@@ -605,6 +638,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   String name =
@@ -631,6 +666,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   DeleteSpecialistPoolRequest request =
@@ -658,6 +695,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   DeleteSpecialistPoolRequest request =
@@ -685,6 +724,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   DeleteSpecialistPoolRequest request =
@@ -712,6 +753,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   SpecialistPool specialistPool = SpecialistPool.newBuilder().build();
@@ -742,6 +785,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   UpdateSpecialistPoolRequest request =
@@ -769,6 +814,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   UpdateSpecialistPoolRequest request =
@@ -796,6 +843,8 @@ public class SpecialistPoolServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (SpecialistPoolServiceClient specialistPoolServiceClient =
    *     SpecialistPoolServiceClient.create()) {
    *   UpdateSpecialistPoolRequest request =

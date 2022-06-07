@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,6 +44,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (InstanceGroupManagersClient instanceGroupManagersClient =
  *     InstanceGroupManagersClient.create()) {
  *   String project = "project-309310695";
@@ -84,6 +86,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * InstanceGroupManagersSettings instanceGroupManagersSettings =
  *     InstanceGroupManagersSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -95,6 +99,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * InstanceGroupManagersSettings instanceGroupManagersSettings =
  *     InstanceGroupManagersSettings.newBuilder().setEndpoint(myEndpoint).build();
  * InstanceGroupManagersClient instanceGroupManagersClient =
@@ -126,7 +132,6 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * Constructs an instance of InstanceGroupManagersClient, using the given stub for making calls.
    * This is for advanced usage - prefer using create(InstanceGroupManagersSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final InstanceGroupManagersClient create(InstanceGroupManagersStub stub) {
     return new InstanceGroupManagersClient(stub);
   }
@@ -141,7 +146,6 @@ public class InstanceGroupManagersClient implements BackgroundResource {
     this.stub = ((InstanceGroupManagersStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected InstanceGroupManagersClient(InstanceGroupManagersStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -151,7 +155,6 @@ public class InstanceGroupManagersClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public InstanceGroupManagersStub getStub() {
     return stub;
   }
@@ -172,6 +175,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -230,6 +235,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   AbandonInstancesInstanceGroupManagerRequest request =
@@ -271,6 +278,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   AbandonInstancesInstanceGroupManagerRequest request =
@@ -310,6 +319,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   AbandonInstancesInstanceGroupManagerRequest request =
@@ -340,6 +351,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -366,6 +379,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   AggregatedListInstanceGroupManagersRequest request =
@@ -400,6 +415,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   AggregatedListInstanceGroupManagersRequest request =
@@ -434,6 +451,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   AggregatedListInstanceGroupManagersRequest request =
@@ -477,6 +496,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -526,6 +547,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ApplyUpdatesToInstancesInstanceGroupManagerRequest request =
@@ -558,6 +581,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ApplyUpdatesToInstancesInstanceGroupManagerRequest request =
@@ -591,6 +616,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ApplyUpdatesToInstancesInstanceGroupManagerRequest request =
@@ -615,15 +642,17 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Creates instances with per-instance configs in this managed instance group. Instances are
-   * created using the current instance template. The create instances operation is marked DONE if
-   * the createInstances request is successful. The underlying actions take additional time. You
+   * Creates instances with per-instance configurations in this managed instance group. Instances
+   * are created using the current instance template. The create instances operation is marked DONE
+   * if the createInstances request is successful. The underlying actions take additional time. You
    * must separately verify the status of the creating or actions with the listmanagedinstances
    * method.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -670,15 +699,17 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Creates instances with per-instance configs in this managed instance group. Instances are
-   * created using the current instance template. The create instances operation is marked DONE if
-   * the createInstances request is successful. The underlying actions take additional time. You
+   * Creates instances with per-instance configurations in this managed instance group. Instances
+   * are created using the current instance template. The create instances operation is marked DONE
+   * if the createInstances request is successful. The underlying actions take additional time. You
    * must separately verify the status of the creating or actions with the listmanagedinstances
    * method.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   CreateInstancesInstanceGroupManagerRequest request =
@@ -706,15 +737,17 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Creates instances with per-instance configs in this managed instance group. Instances are
-   * created using the current instance template. The create instances operation is marked DONE if
-   * the createInstances request is successful. The underlying actions take additional time. You
+   * Creates instances with per-instance configurations in this managed instance group. Instances
+   * are created using the current instance template. The create instances operation is marked DONE
+   * if the createInstances request is successful. The underlying actions take additional time. You
    * must separately verify the status of the creating or actions with the listmanagedinstances
    * method.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   CreateInstancesInstanceGroupManagerRequest request =
@@ -740,15 +773,17 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Creates instances with per-instance configs in this managed instance group. Instances are
-   * created using the current instance template. The create instances operation is marked DONE if
-   * the createInstances request is successful. The underlying actions take additional time. You
+   * Creates instances with per-instance configurations in this managed instance group. Instances
+   * are created using the current instance template. The create instances operation is marked DONE
+   * if the createInstances request is successful. The underlying actions take additional time. You
    * must separately verify the status of the creating or actions with the listmanagedinstances
    * method.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   CreateInstancesInstanceGroupManagerRequest request =
@@ -781,6 +816,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -816,6 +853,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeleteInstanceGroupManagerRequest request =
@@ -848,6 +887,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeleteInstanceGroupManagerRequest request =
@@ -878,6 +919,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeleteInstanceGroupManagerRequest request =
@@ -913,6 +956,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -970,6 +1015,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeleteInstancesInstanceGroupManagerRequest request =
@@ -1010,6 +1057,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeleteInstancesInstanceGroupManagerRequest request =
@@ -1048,6 +1097,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeleteInstancesInstanceGroupManagerRequest request =
@@ -1073,11 +1124,13 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Deletes selected per-instance configs for the managed instance group.
+   * Deletes selected per-instance configurations for the managed instance group.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1125,11 +1178,13 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Deletes selected per-instance configs for the managed instance group.
+   * Deletes selected per-instance configurations for the managed instance group.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeletePerInstanceConfigsInstanceGroupManagerRequest request =
@@ -1156,11 +1211,13 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Deletes selected per-instance configs for the managed instance group.
+   * Deletes selected per-instance configurations for the managed instance group.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeletePerInstanceConfigsInstanceGroupManagerRequest request =
@@ -1188,11 +1245,13 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Deletes selected per-instance configs for the managed instance group.
+   * Deletes selected per-instance configurations for the managed instance group.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   DeletePerInstanceConfigsInstanceGroupManagerRequest request =
@@ -1223,6 +1282,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1256,6 +1317,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   GetInstanceGroupManagerRequest request =
@@ -1283,6 +1346,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   GetInstanceGroupManagerRequest request =
@@ -1314,6 +1379,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1354,6 +1421,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   InsertInstanceGroupManagerRequest request =
@@ -1389,6 +1458,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   InsertInstanceGroupManagerRequest request =
@@ -1422,6 +1493,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   InsertInstanceGroupManagerRequest request =
@@ -1450,6 +1523,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1479,6 +1554,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListInstanceGroupManagersRequest request =
@@ -1512,6 +1589,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListInstanceGroupManagersRequest request =
@@ -1546,6 +1625,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListInstanceGroupManagersRequest request =
@@ -1587,6 +1668,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1628,6 +1711,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListErrorsInstanceGroupManagersRequest request =
@@ -1663,6 +1748,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListErrorsInstanceGroupManagersRequest request =
@@ -1698,6 +1785,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListErrorsInstanceGroupManagersRequest request =
@@ -1744,6 +1833,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1785,6 +1876,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListManagedInstancesInstanceGroupManagersRequest request =
@@ -1824,6 +1917,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListManagedInstancesInstanceGroupManagersRequest request =
@@ -1863,6 +1958,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListManagedInstancesInstanceGroupManagersRequest request =
@@ -1901,12 +1998,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Lists all of the per-instance configs defined for the managed instance group. The orderBy query
-   * parameter is not supported.
+   * Lists all of the per-instance configurations defined for the managed instance group. The
+   * orderBy query parameter is not supported.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -1941,12 +2040,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Lists all of the per-instance configs defined for the managed instance group. The orderBy query
-   * parameter is not supported.
+   * Lists all of the per-instance configurations defined for the managed instance group. The
+   * orderBy query parameter is not supported.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListPerInstanceConfigsInstanceGroupManagersRequest request =
@@ -1977,12 +2078,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Lists all of the per-instance configs defined for the managed instance group. The orderBy query
-   * parameter is not supported.
+   * Lists all of the per-instance configurations defined for the managed instance group. The
+   * orderBy query parameter is not supported.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListPerInstanceConfigsInstanceGroupManagersRequest request =
@@ -2013,12 +2116,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Lists all of the per-instance configs defined for the managed instance group. The orderBy query
-   * parameter is not supported.
+   * Lists all of the per-instance configurations defined for the managed instance group. The
+   * orderBy query parameter is not supported.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ListPerInstanceConfigsInstanceGroupManagersRequest request =
@@ -2069,6 +2174,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -2117,6 +2224,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   PatchInstanceGroupManagerRequest request =
@@ -2155,6 +2264,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   PatchInstanceGroupManagerRequest request =
@@ -2191,6 +2302,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   PatchInstanceGroupManagerRequest request =
@@ -2213,12 +2326,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or patches per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or patches per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -2266,12 +2381,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or patches per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or patches per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   PatchPerInstanceConfigsInstanceGroupManagerRequest request =
@@ -2299,12 +2416,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or patches per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or patches per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   PatchPerInstanceConfigsInstanceGroupManagerRequest request =
@@ -2333,12 +2452,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or patches per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or patches per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   PatchPerInstanceConfigsInstanceGroupManagerRequest request =
@@ -2376,6 +2497,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -2432,6 +2555,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   RecreateInstancesInstanceGroupManagerRequest request =
@@ -2471,6 +2596,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   RecreateInstancesInstanceGroupManagerRequest request =
@@ -2508,6 +2635,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   RecreateInstancesInstanceGroupManagerRequest request =
@@ -2549,6 +2678,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -2598,6 +2729,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ResizeInstanceGroupManagerRequest request =
@@ -2640,6 +2773,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ResizeInstanceGroupManagerRequest request =
@@ -2680,6 +2815,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   ResizeInstanceGroupManagerRequest request =
@@ -2710,6 +2847,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -2762,6 +2901,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   SetInstanceTemplateInstanceGroupManagerRequest request =
@@ -2796,6 +2937,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   SetInstanceTemplateInstanceGroupManagerRequest request =
@@ -2829,6 +2972,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   SetInstanceTemplateInstanceGroupManagerRequest request =
@@ -2863,6 +3008,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -2916,6 +3063,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   SetTargetPoolsInstanceGroupManagerRequest request =
@@ -2952,6 +3101,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   SetTargetPoolsInstanceGroupManagerRequest request =
@@ -2986,6 +3137,8 @@ public class InstanceGroupManagersClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   SetTargetPoolsInstanceGroupManagerRequest request =
@@ -3011,12 +3164,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or updates per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or updates per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   String project = "project-309310695";
@@ -3064,12 +3219,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or updates per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or updates per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   UpdatePerInstanceConfigsInstanceGroupManagerRequest request =
@@ -3097,12 +3254,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or updates per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or updates per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   UpdatePerInstanceConfigsInstanceGroupManagerRequest request =
@@ -3131,12 +3290,14 @@ public class InstanceGroupManagersClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * Inserts or updates per-instance configs for the managed instance group. perInstanceConfig.name
-   * serves as a key used to distinguish whether to perform insert or patch.
+   * Inserts or updates per-instance configurations for the managed instance group.
+   * perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (InstanceGroupManagersClient instanceGroupManagersClient =
    *     InstanceGroupManagersClient.create()) {
    *   UpdatePerInstanceConfigsInstanceGroupManagerRequest request =

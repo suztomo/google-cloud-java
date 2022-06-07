@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
  *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
  *   Model response = modelServiceClient.getModel(name);
@@ -82,6 +84,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * ModelServiceSettings modelServiceSettings =
  *     ModelServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -92,6 +96,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * ModelServiceSettings modelServiceSettings =
  *     ModelServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * ModelServiceClient modelServiceClient = ModelServiceClient.create(modelServiceSettings);
@@ -123,7 +129,6 @@ public class ModelServiceClient implements BackgroundResource {
    * Constructs an instance of ModelServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer using create(ModelServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ModelServiceClient create(ModelServiceStub stub) {
     return new ModelServiceClient(stub);
   }
@@ -139,7 +144,6 @@ public class ModelServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ModelServiceClient(ModelServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -150,7 +154,6 @@ public class ModelServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ModelServiceStub getStub() {
     return stub;
   }
@@ -170,6 +173,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Model model = Model.newBuilder().build();
@@ -199,6 +204,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Model model = Model.newBuilder().build();
@@ -225,6 +232,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   UploadModelRequest request =
    *       UploadModelRequest.newBuilder()
@@ -252,6 +261,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   UploadModelRequest request =
    *       UploadModelRequest.newBuilder()
@@ -280,6 +291,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   UploadModelRequest request =
    *       UploadModelRequest.newBuilder()
@@ -305,6 +318,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   Model response = modelServiceClient.getModel(name);
@@ -313,6 +328,13 @@ public class ModelServiceClient implements BackgroundResource {
    *
    * @param name Required. The name of the Model resource. Format:
    *     `projects/{project}/locations/{location}/models/{model}`
+   *     <p>In order to retrieve a specific version of the model, also provide the version ID or
+   *     version alias. Example:
+   *     `projects/{project}/locations/{location}/models/{model}{@literal @}2` or
+   *     `projects/{project}/locations/{location}/models/{model}{@literal @}golden` If no version ID
+   *     or alias is specified, the "default" version will be returned. The "default" version alias
+   *     is created for the first version of the model, and can be moved to other versions later on.
+   *     There will be exactly one default version.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Model getModel(ModelName name) {
@@ -328,6 +350,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   Model response = modelServiceClient.getModel(name);
@@ -336,6 +360,13 @@ public class ModelServiceClient implements BackgroundResource {
    *
    * @param name Required. The name of the Model resource. Format:
    *     `projects/{project}/locations/{location}/models/{model}`
+   *     <p>In order to retrieve a specific version of the model, also provide the version ID or
+   *     version alias. Example:
+   *     `projects/{project}/locations/{location}/models/{model}{@literal @}2` or
+   *     `projects/{project}/locations/{location}/models/{model}{@literal @}golden` If no version ID
+   *     or alias is specified, the "default" version will be returned. The "default" version alias
+   *     is created for the first version of the model, and can be moved to other versions later on.
+   *     There will be exactly one default version.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Model getModel(String name) {
@@ -350,6 +381,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   GetModelRequest request =
    *       GetModelRequest.newBuilder()
@@ -373,6 +406,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   GetModelRequest request =
    *       GetModelRequest.newBuilder()
@@ -395,6 +430,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (Model element : modelServiceClient.listModels(parent).iterateAll()) {
@@ -420,6 +457,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (Model element : modelServiceClient.listModels(parent).iterateAll()) {
@@ -444,6 +483,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelsRequest request =
    *       ListModelsRequest.newBuilder()
@@ -473,6 +514,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelsRequest request =
    *       ListModelsRequest.newBuilder()
@@ -501,6 +544,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelsRequest request =
    *       ListModelsRequest.newBuilder()
@@ -536,6 +581,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   for (Model element : modelServiceClient.listModelVersions(name).iterateAll()) {
@@ -562,6 +609,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   for (Model element : modelServiceClient.listModelVersions(name).iterateAll()) {
@@ -585,6 +634,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelVersionsRequest request =
    *       ListModelVersionsRequest.newBuilder()
@@ -614,6 +665,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelVersionsRequest request =
    *       ListModelVersionsRequest.newBuilder()
@@ -644,6 +697,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelVersionsRequest request =
    *       ListModelVersionsRequest.newBuilder()
@@ -681,6 +736,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   Model model = Model.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -717,6 +774,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   UpdateModelRequest request =
    *       UpdateModelRequest.newBuilder()
@@ -741,6 +800,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   UpdateModelRequest request =
    *       UpdateModelRequest.newBuilder()
@@ -759,6 +820,151 @@ public class ModelServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
+   * Incrementally update the dataset used for an examples model.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
+   * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
+   *   ModelName model = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
+   *   UpdateExplanationDatasetResponse response =
+   *       modelServiceClient.updateExplanationDatasetAsync(model).get();
+   * }
+   * }</pre>
+   *
+   * @param model Required. The resource name of the Model to update. Format:
+   *     `projects/{project}/locations/{location}/models/{model}`
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  public final OperationFuture<
+          UpdateExplanationDatasetResponse, UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetAsync(ModelName model) {
+    UpdateExplanationDatasetRequest request =
+        UpdateExplanationDatasetRequest.newBuilder()
+            .setModel(model == null ? null : model.toString())
+            .build();
+    return updateExplanationDatasetAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD.
+  /**
+   * Incrementally update the dataset used for an examples model.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
+   * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
+   *   String model = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
+   *   UpdateExplanationDatasetResponse response =
+   *       modelServiceClient.updateExplanationDatasetAsync(model).get();
+   * }
+   * }</pre>
+   *
+   * @param model Required. The resource name of the Model to update. Format:
+   *     `projects/{project}/locations/{location}/models/{model}`
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  public final OperationFuture<
+          UpdateExplanationDatasetResponse, UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetAsync(String model) {
+    UpdateExplanationDatasetRequest request =
+        UpdateExplanationDatasetRequest.newBuilder().setModel(model).build();
+    return updateExplanationDatasetAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD.
+  /**
+   * Incrementally update the dataset used for an examples model.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
+   * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
+   *   UpdateExplanationDatasetRequest request =
+   *       UpdateExplanationDatasetRequest.newBuilder()
+   *           .setModel(ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString())
+   *           .setExamples(Examples.newBuilder().build())
+   *           .build();
+   *   UpdateExplanationDatasetResponse response =
+   *       modelServiceClient.updateExplanationDatasetAsync(request).get();
+   * }
+   * }</pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  public final OperationFuture<
+          UpdateExplanationDatasetResponse, UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetAsync(UpdateExplanationDatasetRequest request) {
+    return updateExplanationDatasetOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD.
+  /**
+   * Incrementally update the dataset used for an examples model.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
+   * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
+   *   UpdateExplanationDatasetRequest request =
+   *       UpdateExplanationDatasetRequest.newBuilder()
+   *           .setModel(ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString())
+   *           .setExamples(Examples.newBuilder().build())
+   *           .build();
+   *   OperationFuture<UpdateExplanationDatasetResponse, UpdateExplanationDatasetOperationMetadata>
+   *       future =
+   *           modelServiceClient.updateExplanationDatasetOperationCallable().futureCall(request);
+   *   // Do something.
+   *   UpdateExplanationDatasetResponse response = future.get();
+   * }
+   * }</pre>
+   */
+  public final OperationCallable<
+          UpdateExplanationDatasetRequest,
+          UpdateExplanationDatasetResponse,
+          UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetOperationCallable() {
+    return stub.updateExplanationDatasetOperationCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD.
+  /**
+   * Incrementally update the dataset used for an examples model.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
+   * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
+   *   UpdateExplanationDatasetRequest request =
+   *       UpdateExplanationDatasetRequest.newBuilder()
+   *           .setModel(ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString())
+   *           .setExamples(Examples.newBuilder().build())
+   *           .build();
+   *   ApiFuture<Operation> future =
+   *       modelServiceClient.updateExplanationDatasetCallable().futureCall(request);
+   *   // Do something.
+   *   Operation response = future.get();
+   * }
+   * }</pre>
+   */
+  public final UnaryCallable<UpdateExplanationDatasetRequest, Operation>
+      updateExplanationDatasetCallable() {
+    return stub.updateExplanationDatasetCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD.
+  /**
    * Deletes a Model.
    *
    * <p>A model cannot be deleted if any [Endpoint][google.cloud.aiplatform.v1beta1.Endpoint]
@@ -768,6 +974,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   modelServiceClient.deleteModelAsync(name).get();
@@ -795,6 +1003,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   modelServiceClient.deleteModelAsync(name).get();
@@ -821,6 +1031,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   DeleteModelRequest request =
    *       DeleteModelRequest.newBuilder()
@@ -849,6 +1061,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   DeleteModelRequest request =
    *       DeleteModelRequest.newBuilder()
@@ -877,6 +1091,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   DeleteModelRequest request =
    *       DeleteModelRequest.newBuilder()
@@ -904,6 +1120,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   modelServiceClient.deleteModelVersionAsync(name).get();
@@ -936,6 +1154,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   modelServiceClient.deleteModelVersionAsync(name).get();
@@ -966,6 +1186,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   DeleteModelVersionRequest request =
    *       DeleteModelVersionRequest.newBuilder()
@@ -995,6 +1217,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   DeleteModelVersionRequest request =
    *       DeleteModelVersionRequest.newBuilder()
@@ -1024,6 +1248,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   DeleteModelVersionRequest request =
    *       DeleteModelVersionRequest.newBuilder()
@@ -1047,6 +1273,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   List<String> versionAliases = new ArrayList<>();
@@ -1083,6 +1311,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   List<String> versionAliases = new ArrayList<>();
@@ -1119,6 +1349,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   MergeVersionAliasesRequest request =
    *       MergeVersionAliasesRequest.newBuilder()
@@ -1143,6 +1375,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   MergeVersionAliasesRequest request =
    *       MergeVersionAliasesRequest.newBuilder()
@@ -1169,6 +1403,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   ExportModelRequest.OutputConfig outputConfig =
@@ -1177,7 +1413,9 @@ public class ModelServiceClient implements BackgroundResource {
    * }
    * }</pre>
    *
-   * @param name Required. The resource name of the Model to export.
+   * @param name Required. The resource name of the Model to export. The resource name may contain
+   *     version id or version alias to specify the version, if no version is specified, the default
+   *     version will be exported.
    * @param outputConfig Required. The desired output location and configuration.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -1200,6 +1438,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   ExportModelRequest.OutputConfig outputConfig =
@@ -1208,7 +1448,9 @@ public class ModelServiceClient implements BackgroundResource {
    * }
    * }</pre>
    *
-   * @param name Required. The resource name of the Model to export.
+   * @param name Required. The resource name of the Model to export. The resource name may contain
+   *     version id or version alias to specify the version, if no version is specified, the default
+   *     version will be exported.
    * @param outputConfig Required. The desired output location and configuration.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -1228,6 +1470,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ExportModelRequest request =
    *       ExportModelRequest.newBuilder()
@@ -1255,6 +1499,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ExportModelRequest request =
    *       ExportModelRequest.newBuilder()
@@ -1283,6 +1529,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ExportModelRequest request =
    *       ExportModelRequest.newBuilder()
@@ -1306,6 +1554,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName parent = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   ModelEvaluation modelEvaluation = ModelEvaluation.newBuilder().build();
@@ -1335,6 +1585,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String parent = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   ModelEvaluation modelEvaluation = ModelEvaluation.newBuilder().build();
@@ -1364,6 +1616,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ImportModelEvaluationRequest request =
    *       ImportModelEvaluationRequest.newBuilder()
@@ -1388,6 +1642,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ImportModelEvaluationRequest request =
    *       ImportModelEvaluationRequest.newBuilder()
@@ -1413,6 +1669,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelEvaluationName name =
    *       ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]");
@@ -1439,6 +1697,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name =
    *       ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]").toString();
@@ -1463,6 +1723,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   GetModelEvaluationRequest request =
    *       GetModelEvaluationRequest.newBuilder()
@@ -1488,6 +1750,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   GetModelEvaluationRequest request =
    *       GetModelEvaluationRequest.newBuilder()
@@ -1514,6 +1778,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelName parent = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
    *   for (ModelEvaluation element : modelServiceClient.listModelEvaluations(parent).iterateAll()) {
@@ -1541,6 +1807,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String parent = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]").toString();
    *   for (ModelEvaluation element : modelServiceClient.listModelEvaluations(parent).iterateAll()) {
@@ -1566,6 +1834,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelEvaluationsRequest request =
    *       ListModelEvaluationsRequest.newBuilder()
@@ -1597,6 +1867,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelEvaluationsRequest request =
    *       ListModelEvaluationsRequest.newBuilder()
@@ -1627,6 +1899,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelEvaluationsRequest request =
    *       ListModelEvaluationsRequest.newBuilder()
@@ -1664,6 +1938,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelEvaluationSliceName name =
    *       ModelEvaluationSliceName.of(
@@ -1691,6 +1967,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String name =
    *       ModelEvaluationSliceName.of(
@@ -1717,6 +1995,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   GetModelEvaluationSliceRequest request =
    *       GetModelEvaluationSliceRequest.newBuilder()
@@ -1744,6 +2024,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   GetModelEvaluationSliceRequest request =
    *       GetModelEvaluationSliceRequest.newBuilder()
@@ -1771,6 +2053,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ModelEvaluationName parent =
    *       ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]");
@@ -1802,6 +2086,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   String parent =
    *       ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]").toString();
@@ -1830,6 +2116,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelEvaluationSlicesRequest request =
    *       ListModelEvaluationSlicesRequest.newBuilder()
@@ -1863,6 +2151,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelEvaluationSlicesRequest request =
    *       ListModelEvaluationSlicesRequest.newBuilder()
@@ -1896,6 +2186,8 @@ public class ModelServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (ModelServiceClient modelServiceClient = ModelServiceClient.create()) {
    *   ListModelEvaluationSlicesRequest request =
    *       ListModelEvaluationSlicesRequest.newBuilder()

@@ -129,7 +129,6 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * Constructs an instance of AnalyticsAdminServiceClient, using the given stub for making calls.
    * This is for advanced usage - prefer using create(AnalyticsAdminServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final AnalyticsAdminServiceClient create(AnalyticsAdminServiceStub stub) {
     return new AnalyticsAdminServiceClient(stub);
   }
@@ -144,7 +143,6 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
     this.stub = ((AnalyticsAdminServiceStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected AnalyticsAdminServiceClient(AnalyticsAdminServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -154,7 +152,6 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public AnalyticsAdminServiceStub getStub() {
     return stub;
   }
@@ -6530,7 +6527,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   CustomDimensionName name = CustomDimensionName.of("[PROPERTY]");
+   *   CustomDimensionName name = CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]");
    *   analyticsAdminServiceClient.archiveCustomDimension(name);
    * }
    * }</pre>
@@ -6558,7 +6555,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   String name = CustomDimensionName.of("[PROPERTY]").toString();
+   *   String name = CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]").toString();
    *   analyticsAdminServiceClient.archiveCustomDimension(name);
    * }
    * }</pre>
@@ -6586,7 +6583,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   ArchiveCustomDimensionRequest request =
    *       ArchiveCustomDimensionRequest.newBuilder()
-   *           .setName(CustomDimensionName.of("[PROPERTY]").toString())
+   *           .setName(CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]").toString())
    *           .build();
    *   analyticsAdminServiceClient.archiveCustomDimension(request);
    * }
@@ -6612,7 +6609,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   ArchiveCustomDimensionRequest request =
    *       ArchiveCustomDimensionRequest.newBuilder()
-   *           .setName(CustomDimensionName.of("[PROPERTY]").toString())
+   *           .setName(CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]").toString())
    *           .build();
    *   ApiFuture<Empty> future =
    *       analyticsAdminServiceClient.archiveCustomDimensionCallable().futureCall(request);
@@ -6637,7 +6634,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   CustomDimensionName name = CustomDimensionName.of("[PROPERTY]");
+   *   CustomDimensionName name = CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]");
    *   CustomDimension response = analyticsAdminServiceClient.getCustomDimension(name);
    * }
    * }</pre>
@@ -6665,7 +6662,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   String name = CustomDimensionName.of("[PROPERTY]").toString();
+   *   String name = CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]").toString();
    *   CustomDimension response = analyticsAdminServiceClient.getCustomDimension(name);
    * }
    * }</pre>
@@ -6693,7 +6690,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   GetCustomDimensionRequest request =
    *       GetCustomDimensionRequest.newBuilder()
-   *           .setName(CustomDimensionName.of("[PROPERTY]").toString())
+   *           .setName(CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]").toString())
    *           .build();
    *   CustomDimension response = analyticsAdminServiceClient.getCustomDimension(request);
    * }
@@ -6719,7 +6716,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   GetCustomDimensionRequest request =
    *       GetCustomDimensionRequest.newBuilder()
-   *           .setName(CustomDimensionName.of("[PROPERTY]").toString())
+   *           .setName(CustomDimensionName.of("[PROPERTY]", "[CUSTOM_DIMENSION]").toString())
    *           .build();
    *   ApiFuture<CustomDimension> future =
    *       analyticsAdminServiceClient.getCustomDimensionCallable().futureCall(request);
@@ -7103,7 +7100,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   CustomMetricName name = CustomMetricName.of("[PROPERTY]");
+   *   CustomMetricName name = CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]");
    *   analyticsAdminServiceClient.archiveCustomMetric(name);
    * }
    * }</pre>
@@ -7131,7 +7128,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   String name = CustomMetricName.of("[PROPERTY]").toString();
+   *   String name = CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]").toString();
    *   analyticsAdminServiceClient.archiveCustomMetric(name);
    * }
    * }</pre>
@@ -7159,7 +7156,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   ArchiveCustomMetricRequest request =
    *       ArchiveCustomMetricRequest.newBuilder()
-   *           .setName(CustomMetricName.of("[PROPERTY]").toString())
+   *           .setName(CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]").toString())
    *           .build();
    *   analyticsAdminServiceClient.archiveCustomMetric(request);
    * }
@@ -7185,7 +7182,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   ArchiveCustomMetricRequest request =
    *       ArchiveCustomMetricRequest.newBuilder()
-   *           .setName(CustomMetricName.of("[PROPERTY]").toString())
+   *           .setName(CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]").toString())
    *           .build();
    *   ApiFuture<Empty> future =
    *       analyticsAdminServiceClient.archiveCustomMetricCallable().futureCall(request);
@@ -7209,7 +7206,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   CustomMetricName name = CustomMetricName.of("[PROPERTY]");
+   *   CustomMetricName name = CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]");
    *   CustomMetric response = analyticsAdminServiceClient.getCustomMetric(name);
    * }
    * }</pre>
@@ -7235,7 +7232,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    * // It may require modifications to work in your environment.
    * try (AnalyticsAdminServiceClient analyticsAdminServiceClient =
    *     AnalyticsAdminServiceClient.create()) {
-   *   String name = CustomMetricName.of("[PROPERTY]").toString();
+   *   String name = CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]").toString();
    *   CustomMetric response = analyticsAdminServiceClient.getCustomMetric(name);
    * }
    * }</pre>
@@ -7262,7 +7259,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   GetCustomMetricRequest request =
    *       GetCustomMetricRequest.newBuilder()
-   *           .setName(CustomMetricName.of("[PROPERTY]").toString())
+   *           .setName(CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]").toString())
    *           .build();
    *   CustomMetric response = analyticsAdminServiceClient.getCustomMetric(request);
    * }
@@ -7288,7 +7285,7 @@ public class AnalyticsAdminServiceClient implements BackgroundResource {
    *     AnalyticsAdminServiceClient.create()) {
    *   GetCustomMetricRequest request =
    *       GetCustomMetricRequest.newBuilder()
-   *           .setName(CustomMetricName.of("[PROPERTY]").toString())
+   *           .setName(CustomMetricName.of("[PROPERTY]", "[CUSTOM_METRIC]").toString())
    *           .build();
    *   ApiFuture<CustomMetric> future =
    *       analyticsAdminServiceClient.getCustomMetricCallable().futureCall(request);

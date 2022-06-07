@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,6 +51,9 @@ import com.google.cloud.aiplatform.v1beta1.MergeVersionAliasesRequest;
 import com.google.cloud.aiplatform.v1beta1.Model;
 import com.google.cloud.aiplatform.v1beta1.ModelEvaluation;
 import com.google.cloud.aiplatform.v1beta1.ModelEvaluationSlice;
+import com.google.cloud.aiplatform.v1beta1.UpdateExplanationDatasetOperationMetadata;
+import com.google.cloud.aiplatform.v1beta1.UpdateExplanationDatasetRequest;
+import com.google.cloud.aiplatform.v1beta1.UpdateExplanationDatasetResponse;
 import com.google.cloud.aiplatform.v1beta1.UpdateModelRequest;
 import com.google.cloud.aiplatform.v1beta1.UploadModelOperationMetadata;
 import com.google.cloud.aiplatform.v1beta1.UploadModelRequest;
@@ -117,6 +120,17 @@ public class GrpcModelServiceStub extends ModelServiceStub {
           .setRequestMarshaller(ProtoUtils.marshaller(UpdateModelRequest.getDefaultInstance()))
           .setResponseMarshaller(ProtoUtils.marshaller(Model.getDefaultInstance()))
           .build();
+
+  private static final MethodDescriptor<UpdateExplanationDatasetRequest, Operation>
+      updateExplanationDatasetMethodDescriptor =
+          MethodDescriptor.<UpdateExplanationDatasetRequest, Operation>newBuilder()
+              .setType(MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(
+                  "google.cloud.aiplatform.v1beta1.ModelService/UpdateExplanationDataset")
+              .setRequestMarshaller(
+                  ProtoUtils.marshaller(UpdateExplanationDatasetRequest.getDefaultInstance()))
+              .setResponseMarshaller(ProtoUtils.marshaller(Operation.getDefaultInstance()))
+              .build();
 
   private static final MethodDescriptor<DeleteModelRequest, Operation> deleteModelMethodDescriptor =
       MethodDescriptor.<DeleteModelRequest, Operation>newBuilder()
@@ -225,6 +239,13 @@ public class GrpcModelServiceStub extends ModelServiceStub {
   private final UnaryCallable<ListModelVersionsRequest, ListModelVersionsPagedResponse>
       listModelVersionsPagedCallable;
   private final UnaryCallable<UpdateModelRequest, Model> updateModelCallable;
+  private final UnaryCallable<UpdateExplanationDatasetRequest, Operation>
+      updateExplanationDatasetCallable;
+  private final OperationCallable<
+          UpdateExplanationDatasetRequest,
+          UpdateExplanationDatasetResponse,
+          UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetOperationCallable;
   private final UnaryCallable<DeleteModelRequest, Operation> deleteModelCallable;
   private final OperationCallable<DeleteModelRequest, Empty, DeleteOperationMetadata>
       deleteModelOperationCallable;
@@ -345,6 +366,17 @@ public class GrpcModelServiceStub extends ModelServiceStub {
                   return params.build();
                 })
             .build();
+    GrpcCallSettings<UpdateExplanationDatasetRequest, Operation>
+        updateExplanationDatasetTransportSettings =
+            GrpcCallSettings.<UpdateExplanationDatasetRequest, Operation>newBuilder()
+                .setMethodDescriptor(updateExplanationDatasetMethodDescriptor)
+                .setParamsExtractor(
+                    request -> {
+                      ImmutableMap.Builder<String, String> params = ImmutableMap.builder();
+                      params.put("model", String.valueOf(request.getModel()));
+                      return params.build();
+                    })
+                .build();
     GrpcCallSettings<DeleteModelRequest, Operation> deleteModelTransportSettings =
         GrpcCallSettings.<DeleteModelRequest, Operation>newBuilder()
             .setMethodDescriptor(deleteModelMethodDescriptor)
@@ -473,6 +505,17 @@ public class GrpcModelServiceStub extends ModelServiceStub {
     this.updateModelCallable =
         callableFactory.createUnaryCallable(
             updateModelTransportSettings, settings.updateModelSettings(), clientContext);
+    this.updateExplanationDatasetCallable =
+        callableFactory.createUnaryCallable(
+            updateExplanationDatasetTransportSettings,
+            settings.updateExplanationDatasetSettings(),
+            clientContext);
+    this.updateExplanationDatasetOperationCallable =
+        callableFactory.createOperationCallable(
+            updateExplanationDatasetTransportSettings,
+            settings.updateExplanationDatasetOperationSettings(),
+            clientContext,
+            operationsStub);
     this.deleteModelCallable =
         callableFactory.createUnaryCallable(
             deleteModelTransportSettings, settings.deleteModelSettings(), clientContext);
@@ -592,6 +635,21 @@ public class GrpcModelServiceStub extends ModelServiceStub {
   @Override
   public UnaryCallable<UpdateModelRequest, Model> updateModelCallable() {
     return updateModelCallable;
+  }
+
+  @Override
+  public UnaryCallable<UpdateExplanationDatasetRequest, Operation>
+      updateExplanationDatasetCallable() {
+    return updateExplanationDatasetCallable;
+  }
+
+  @Override
+  public OperationCallable<
+          UpdateExplanationDatasetRequest,
+          UpdateExplanationDatasetResponse,
+          UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetOperationCallable() {
+    return updateExplanationDatasetOperationCallable;
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
  *   FeaturestoreName name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
  *   Featurestore response = featurestoreServiceClient.getFeaturestore(name);
@@ -83,6 +85,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * FeaturestoreServiceSettings featurestoreServiceSettings =
  *     FeaturestoreServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -94,6 +98,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * FeaturestoreServiceSettings featurestoreServiceSettings =
  *     FeaturestoreServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * FeaturestoreServiceClient featurestoreServiceClient =
@@ -127,7 +133,6 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * Constructs an instance of FeaturestoreServiceClient, using the given stub for making calls.
    * This is for advanced usage - prefer using create(FeaturestoreServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final FeaturestoreServiceClient create(FeaturestoreServiceStub stub) {
     return new FeaturestoreServiceClient(stub);
   }
@@ -143,7 +148,6 @@ public class FeaturestoreServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected FeaturestoreServiceClient(FeaturestoreServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -154,7 +158,6 @@ public class FeaturestoreServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public FeaturestoreServiceStub getStub() {
     return stub;
   }
@@ -174,6 +177,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Featurestore featurestore = Featurestore.newBuilder().build();
@@ -204,6 +209,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Featurestore featurestore = Featurestore.newBuilder().build();
@@ -234,6 +241,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Featurestore featurestore = Featurestore.newBuilder().build();
@@ -274,6 +283,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Featurestore featurestore = Featurestore.newBuilder().build();
@@ -313,6 +324,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateFeaturestoreRequest request =
    *       CreateFeaturestoreRequest.newBuilder()
@@ -339,6 +352,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateFeaturestoreRequest request =
    *       CreateFeaturestoreRequest.newBuilder()
@@ -366,6 +381,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateFeaturestoreRequest request =
    *       CreateFeaturestoreRequest.newBuilder()
@@ -391,6 +408,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
    *   Featurestore response = featurestoreServiceClient.getFeaturestore(name);
@@ -413,6 +432,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
    *   Featurestore response = featurestoreServiceClient.getFeaturestore(name);
@@ -434,6 +455,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   GetFeaturestoreRequest request =
    *       GetFeaturestoreRequest.newBuilder()
@@ -457,6 +480,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   GetFeaturestoreRequest request =
    *       GetFeaturestoreRequest.newBuilder()
@@ -480,6 +505,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (Featurestore element :
@@ -508,6 +535,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (Featurestore element :
@@ -534,6 +563,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListFeaturestoresRequest request =
    *       ListFeaturestoresRequest.newBuilder()
@@ -565,6 +596,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListFeaturestoresRequest request =
    *       ListFeaturestoresRequest.newBuilder()
@@ -596,6 +629,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListFeaturestoresRequest request =
    *       ListFeaturestoresRequest.newBuilder()
@@ -634,6 +669,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   Featurestore featurestore = Featurestore.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -671,6 +708,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateFeaturestoreRequest request =
    *       UpdateFeaturestoreRequest.newBuilder()
@@ -696,6 +735,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateFeaturestoreRequest request =
    *       UpdateFeaturestoreRequest.newBuilder()
@@ -722,6 +763,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateFeaturestoreRequest request =
    *       UpdateFeaturestoreRequest.newBuilder()
@@ -747,6 +790,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
    *   featurestoreServiceClient.deleteFeaturestoreAsync(name).get();
@@ -774,6 +819,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
    *   featurestoreServiceClient.deleteFeaturestoreAsync(name).get();
@@ -799,6 +846,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
    *   boolean force = true;
@@ -830,6 +879,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
    *   boolean force = true;
@@ -858,6 +909,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteFeaturestoreRequest request =
    *       DeleteFeaturestoreRequest.newBuilder()
@@ -884,6 +937,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteFeaturestoreRequest request =
    *       DeleteFeaturestoreRequest.newBuilder()
@@ -910,6 +965,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteFeaturestoreRequest request =
    *       DeleteFeaturestoreRequest.newBuilder()
@@ -934,6 +991,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName parent = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
    *   EntityType entityType = EntityType.newBuilder().build();
@@ -964,6 +1023,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
    *   EntityType entityType = EntityType.newBuilder().build();
@@ -991,6 +1052,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName parent = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
    *   EntityType entityType = EntityType.newBuilder().build();
@@ -1028,6 +1091,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
    *   EntityType entityType = EntityType.newBuilder().build();
@@ -1065,6 +1130,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateEntityTypeRequest request =
    *       CreateEntityTypeRequest.newBuilder()
@@ -1092,6 +1159,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateEntityTypeRequest request =
    *       CreateEntityTypeRequest.newBuilder()
@@ -1120,6 +1189,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateEntityTypeRequest request =
    *       CreateEntityTypeRequest.newBuilder()
@@ -1146,6 +1217,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName name =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -1170,6 +1243,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -1194,6 +1269,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   GetEntityTypeRequest request =
    *       GetEntityTypeRequest.newBuilder()
@@ -1219,6 +1296,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   GetEntityTypeRequest request =
    *       GetEntityTypeRequest.newBuilder()
@@ -1244,6 +1323,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName parent = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
    *   for (EntityType element : featurestoreServiceClient.listEntityTypes(parent).iterateAll()) {
@@ -1271,6 +1352,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent = FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
    *   for (EntityType element : featurestoreServiceClient.listEntityTypes(parent).iterateAll()) {
@@ -1295,6 +1378,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListEntityTypesRequest request =
    *       ListEntityTypesRequest.newBuilder()
@@ -1326,6 +1411,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListEntityTypesRequest request =
    *       ListEntityTypesRequest.newBuilder()
@@ -1358,6 +1445,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListEntityTypesRequest request =
    *       ListEntityTypesRequest.newBuilder()
@@ -1397,6 +1486,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityType entityType = EntityType.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -1438,6 +1529,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateEntityTypeRequest request =
    *       UpdateEntityTypeRequest.newBuilder()
@@ -1462,6 +1555,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateEntityTypeRequest request =
    *       UpdateEntityTypeRequest.newBuilder()
@@ -1487,6 +1582,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName name =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -1513,6 +1610,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -1538,6 +1637,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName name =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -1570,6 +1671,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -1600,6 +1703,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteEntityTypeRequest request =
    *       DeleteEntityTypeRequest.newBuilder()
@@ -1628,6 +1733,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteEntityTypeRequest request =
    *       DeleteEntityTypeRequest.newBuilder()
@@ -1656,6 +1763,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteEntityTypeRequest request =
    *       DeleteEntityTypeRequest.newBuilder()
@@ -1682,6 +1791,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -1712,6 +1823,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -1740,6 +1853,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -1778,6 +1893,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -1817,6 +1934,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateFeatureRequest request =
    *       CreateFeatureRequest.newBuilder()
@@ -1845,6 +1964,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateFeatureRequest request =
    *       CreateFeatureRequest.newBuilder()
@@ -1873,6 +1994,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   CreateFeatureRequest request =
    *       CreateFeatureRequest.newBuilder()
@@ -1900,6 +2023,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -1935,6 +2060,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -1968,6 +2095,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   BatchCreateFeaturesRequest request =
    *       BatchCreateFeaturesRequest.newBuilder()
@@ -1996,6 +2125,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   BatchCreateFeaturesRequest request =
    *       BatchCreateFeaturesRequest.newBuilder()
@@ -2026,6 +2157,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   BatchCreateFeaturesRequest request =
    *       BatchCreateFeaturesRequest.newBuilder()
@@ -2052,6 +2185,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeatureName name =
    *       FeatureName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]", "[FEATURE]");
@@ -2076,6 +2211,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name =
    *       FeatureName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]", "[FEATURE]")
@@ -2100,6 +2237,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   GetFeatureRequest request =
    *       GetFeatureRequest.newBuilder()
@@ -2126,6 +2265,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   GetFeatureRequest request =
    *       GetFeatureRequest.newBuilder()
@@ -2152,6 +2293,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -2180,6 +2323,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String parent =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -2206,6 +2351,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListFeaturesRequest request =
    *       ListFeaturesRequest.newBuilder()
@@ -2239,6 +2386,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListFeaturesRequest request =
    *       ListFeaturesRequest.newBuilder()
@@ -2273,6 +2422,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ListFeaturesRequest request =
    *       ListFeaturesRequest.newBuilder()
@@ -2313,6 +2464,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   Feature feature = Feature.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -2345,6 +2498,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateFeatureRequest request =
    *       UpdateFeatureRequest.newBuilder()
@@ -2369,6 +2524,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   UpdateFeatureRequest request =
    *       UpdateFeatureRequest.newBuilder()
@@ -2393,6 +2550,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeatureName name =
    *       FeatureName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]", "[FEATURE]");
@@ -2418,6 +2577,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String name =
    *       FeatureName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]", "[FEATURE]")
@@ -2442,6 +2603,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteFeatureRequest request =
    *       DeleteFeatureRequest.newBuilder()
@@ -2469,6 +2632,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteFeatureRequest request =
    *       DeleteFeatureRequest.newBuilder()
@@ -2496,6 +2661,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   DeleteFeatureRequest request =
    *       DeleteFeatureRequest.newBuilder()
@@ -2538,6 +2705,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName entityType =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -2583,6 +2752,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String entityType =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -2627,6 +2798,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ImportFeatureValuesRequest request =
    *       ImportFeatureValuesRequest.newBuilder()
@@ -2675,6 +2848,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ImportFeatureValuesRequest request =
    *       ImportFeatureValuesRequest.newBuilder()
@@ -2725,6 +2900,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ImportFeatureValuesRequest request =
    *       ImportFeatureValuesRequest.newBuilder()
@@ -2759,6 +2936,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   FeaturestoreName featurestore =
    *       FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]");
@@ -2792,6 +2971,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String featurestore =
    *       FeaturestoreName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]").toString();
@@ -2823,6 +3004,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   BatchReadFeatureValuesRequest request =
    *       BatchReadFeatureValuesRequest.newBuilder()
@@ -2858,6 +3041,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   BatchReadFeatureValuesRequest request =
    *       BatchReadFeatureValuesRequest.newBuilder()
@@ -2897,6 +3082,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   BatchReadFeatureValuesRequest request =
    *       BatchReadFeatureValuesRequest.newBuilder()
@@ -2926,6 +3113,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   EntityTypeName entityType =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]");
@@ -2955,6 +3144,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String entityType =
    *       EntityTypeName.of("[PROJECT]", "[LOCATION]", "[FEATURESTORE]", "[ENTITY_TYPE]")
@@ -2983,6 +3174,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ExportFeatureValuesRequest request =
    *       ExportFeatureValuesRequest.newBuilder()
@@ -3013,6 +3206,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ExportFeatureValuesRequest request =
    *       ExportFeatureValuesRequest.newBuilder()
@@ -3045,6 +3240,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   ExportFeatureValuesRequest request =
    *       ExportFeatureValuesRequest.newBuilder()
@@ -3073,6 +3270,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   LocationName location = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (Feature element : featurestoreServiceClient.searchFeatures(location).iterateAll()) {
@@ -3100,6 +3299,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String location = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (Feature element : featurestoreServiceClient.searchFeatures(location).iterateAll()) {
@@ -3125,6 +3326,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   LocationName location = LocationName.of("[PROJECT]", "[LOCATION]");
    *   String query = "query107944136";
@@ -3206,6 +3409,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   String location = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   String query = "query107944136";
@@ -3284,6 +3489,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   SearchFeaturesRequest request =
    *       SearchFeaturesRequest.newBuilder()
@@ -3312,6 +3519,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   SearchFeaturesRequest request =
    *       SearchFeaturesRequest.newBuilder()
@@ -3341,6 +3550,8 @@ public class FeaturestoreServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreServiceClient featurestoreServiceClient = FeaturestoreServiceClient.create()) {
    *   SearchFeaturesRequest request =
    *       SearchFeaturesRequest.newBuilder()

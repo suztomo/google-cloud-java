@@ -16,7 +16,6 @@
 
 package com.google.cloud.devtools.containeranalysis.v1;
 
-import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.api.resourcenames.ResourceName;
@@ -147,7 +146,6 @@ public class ContainerAnalysisClient implements BackgroundResource {
    * Constructs an instance of ContainerAnalysisClient, using the given stub for making calls. This
    * is for advanced usage - prefer using create(ContainerAnalysisSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ContainerAnalysisClient create(ContainerAnalysisStub stub) {
     return new ContainerAnalysisClient(stub);
   }
@@ -162,7 +160,6 @@ public class ContainerAnalysisClient implements BackgroundResource {
     this.stub = ((ContainerAnalysisStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ContainerAnalysisClient(ContainerAnalysisStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -172,7 +169,6 @@ public class ContainerAnalysisClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ContainerAnalysisStub getStub() {
     return stub;
   }

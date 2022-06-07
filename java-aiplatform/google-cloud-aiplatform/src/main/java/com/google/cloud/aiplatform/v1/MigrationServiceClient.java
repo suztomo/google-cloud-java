@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package com.google.cloud.aiplatform.v1;
 
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
-import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
@@ -46,6 +45,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
  *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
  *   for (MigratableResource element :
@@ -85,6 +86,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * MigrationServiceSettings migrationServiceSettings =
  *     MigrationServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -96,6 +99,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * MigrationServiceSettings migrationServiceSettings =
  *     MigrationServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * MigrationServiceClient migrationServiceClient =
@@ -128,7 +133,6 @@ public class MigrationServiceClient implements BackgroundResource {
    * Constructs an instance of MigrationServiceClient, using the given stub for making calls. This
    * is for advanced usage - prefer using create(MigrationServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final MigrationServiceClient create(MigrationServiceStub stub) {
     return new MigrationServiceClient(stub);
   }
@@ -144,7 +148,6 @@ public class MigrationServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected MigrationServiceClient(MigrationServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -155,7 +158,6 @@ public class MigrationServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public MigrationServiceStub getStub() {
     return stub;
   }
@@ -176,6 +178,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (MigratableResource element :
@@ -207,6 +211,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (MigratableResource element :
@@ -235,6 +241,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   SearchMigratableResourcesRequest request =
    *       SearchMigratableResourcesRequest.newBuilder()
@@ -266,6 +274,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   SearchMigratableResourcesRequest request =
    *       SearchMigratableResourcesRequest.newBuilder()
@@ -297,6 +307,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   SearchMigratableResourcesRequest request =
    *       SearchMigratableResourcesRequest.newBuilder()
@@ -334,6 +346,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   List<MigrateResourceRequest> migrateResourceRequests = new ArrayList<>();
@@ -369,6 +383,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   List<MigrateResourceRequest> migrateResourceRequests = new ArrayList<>();
@@ -404,6 +420,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   BatchMigrateResourcesRequest request =
    *       BatchMigrateResourcesRequest.newBuilder()
@@ -432,6 +450,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   BatchMigrateResourcesRequest request =
    *       BatchMigrateResourcesRequest.newBuilder()
@@ -462,6 +482,8 @@ public class MigrationServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (MigrationServiceClient migrationServiceClient = MigrationServiceClient.create()) {
    *   BatchMigrateResourcesRequest request =
    *       BatchMigrateResourcesRequest.newBuilder()

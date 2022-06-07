@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
  *   EndpointName endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
  *   List<Value> instances = new ArrayList<>();
@@ -74,6 +76,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * PredictionServiceSettings predictionServiceSettings =
  *     PredictionServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -85,6 +89,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * PredictionServiceSettings predictionServiceSettings =
  *     PredictionServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * PredictionServiceClient predictionServiceClient =
@@ -117,7 +123,6 @@ public class PredictionServiceClient implements BackgroundResource {
    * Constructs an instance of PredictionServiceClient, using the given stub for making calls. This
    * is for advanced usage - prefer using create(PredictionServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final PredictionServiceClient create(PredictionServiceStub stub) {
     return new PredictionServiceClient(stub);
   }
@@ -132,7 +137,6 @@ public class PredictionServiceClient implements BackgroundResource {
     this.stub = ((PredictionServiceStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected PredictionServiceClient(PredictionServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -142,7 +146,6 @@ public class PredictionServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public PredictionServiceStub getStub() {
     return stub;
   }
@@ -154,6 +157,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   EndpointName endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   List<Value> instances = new ArrayList<>();
@@ -197,6 +202,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   String endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   List<Value> instances = new ArrayList<>();
@@ -239,6 +246,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   PredictRequest request =
    *       PredictRequest.newBuilder()
@@ -264,6 +273,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   PredictRequest request =
    *       PredictRequest.newBuilder()
@@ -302,6 +313,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   EndpointName endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   HttpBody httpBody = HttpBody.newBuilder().build();
@@ -354,6 +367,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   String endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   HttpBody httpBody = HttpBody.newBuilder().build();
@@ -403,6 +418,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   RawPredictRequest request =
    *       RawPredictRequest.newBuilder()
@@ -440,6 +457,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   RawPredictRequest request =
    *       RawPredictRequest.newBuilder()
@@ -471,6 +490,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   EndpointName endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
    *   List<Value> instances = new ArrayList<>();
@@ -528,6 +549,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   String endpoint = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
    *   List<Value> instances = new ArrayList<>();
@@ -585,6 +608,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   ExplainRequest request =
    *       ExplainRequest.newBuilder()
@@ -620,6 +645,8 @@ public class PredictionServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PredictionServiceClient predictionServiceClient = PredictionServiceClient.create()) {
    *   ExplainRequest request =
    *       ExplainRequest.newBuilder()

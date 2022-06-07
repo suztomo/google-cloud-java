@@ -18,7 +18,6 @@ package com.google.devtools.artifactregistry.v1;
 
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
-import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
@@ -151,7 +150,6 @@ public class ArtifactRegistryClient implements BackgroundResource {
    * Constructs an instance of ArtifactRegistryClient, using the given stub for making calls. This
    * is for advanced usage - prefer using create(ArtifactRegistrySettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ArtifactRegistryClient create(ArtifactRegistryStub stub) {
     return new ArtifactRegistryClient(stub);
   }
@@ -167,7 +165,6 @@ public class ArtifactRegistryClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ArtifactRegistryClient(ArtifactRegistryStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -178,7 +175,6 @@ public class ArtifactRegistryClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ArtifactRegistryStub getStub() {
     return stub;
   }

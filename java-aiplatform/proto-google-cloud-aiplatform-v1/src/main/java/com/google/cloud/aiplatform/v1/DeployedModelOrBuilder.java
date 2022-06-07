@@ -132,8 +132,8 @@ public interface DeployedModelOrBuilder
    *
    *
    * <pre>
-   * Required. The name of the Model that this is the deployment of. Note that the Model
-   * may be in a different location than the DeployedModel's Endpoint.
+   * Required. The resource name of the Model that this is the deployment of. Note that
+   * the Model may be in a different location than the DeployedModel's Endpoint.
    * </pre>
    *
    * <code>
@@ -147,8 +147,8 @@ public interface DeployedModelOrBuilder
    *
    *
    * <pre>
-   * Required. The name of the Model that this is the deployment of. Note that the Model
-   * may be in a different location than the DeployedModel's Endpoint.
+   * Required. The resource name of the Model that this is the deployment of. Note that
+   * the Model may be in a different location than the DeployedModel's Endpoint.
    * </pre>
    *
    * <code>

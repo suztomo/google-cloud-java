@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -563,6 +563,98 @@ public class ModelServiceClientTest {
   }
 
   @Test
+  public void updateExplanationDatasetTest() throws Exception {
+    UpdateExplanationDatasetResponse expectedResponse =
+        UpdateExplanationDatasetResponse.newBuilder().build();
+    Operation resultOperation =
+        Operation.newBuilder()
+            .setName("updateExplanationDatasetTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
+            .build();
+    mockModelService.addResponse(resultOperation);
+
+    ModelName model = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
+
+    UpdateExplanationDatasetResponse actualResponse =
+        client.updateExplanationDatasetAsync(model).get();
+    Assert.assertEquals(expectedResponse, actualResponse);
+
+    List<AbstractMessage> actualRequests = mockModelService.getRequests();
+    Assert.assertEquals(1, actualRequests.size());
+    UpdateExplanationDatasetRequest actualRequest =
+        ((UpdateExplanationDatasetRequest) actualRequests.get(0));
+
+    Assert.assertEquals(model.toString(), actualRequest.getModel());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
+  }
+
+  @Test
+  public void updateExplanationDatasetExceptionTest() throws Exception {
+    StatusRuntimeException exception = new StatusRuntimeException(io.grpc.Status.INVALID_ARGUMENT);
+    mockModelService.addException(exception);
+
+    try {
+      ModelName model = ModelName.of("[PROJECT]", "[LOCATION]", "[MODEL]");
+      client.updateExplanationDatasetAsync(model).get();
+      Assert.fail("No exception raised");
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = ((InvalidArgumentException) e.getCause());
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+    }
+  }
+
+  @Test
+  public void updateExplanationDatasetTest2() throws Exception {
+    UpdateExplanationDatasetResponse expectedResponse =
+        UpdateExplanationDatasetResponse.newBuilder().build();
+    Operation resultOperation =
+        Operation.newBuilder()
+            .setName("updateExplanationDatasetTest")
+            .setDone(true)
+            .setResponse(Any.pack(expectedResponse))
+            .build();
+    mockModelService.addResponse(resultOperation);
+
+    String model = "model104069929";
+
+    UpdateExplanationDatasetResponse actualResponse =
+        client.updateExplanationDatasetAsync(model).get();
+    Assert.assertEquals(expectedResponse, actualResponse);
+
+    List<AbstractMessage> actualRequests = mockModelService.getRequests();
+    Assert.assertEquals(1, actualRequests.size());
+    UpdateExplanationDatasetRequest actualRequest =
+        ((UpdateExplanationDatasetRequest) actualRequests.get(0));
+
+    Assert.assertEquals(model, actualRequest.getModel());
+    Assert.assertTrue(
+        channelProvider.isHeaderSent(
+            ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
+            GaxGrpcProperties.getDefaultApiClientHeaderPattern()));
+  }
+
+  @Test
+  public void updateExplanationDatasetExceptionTest2() throws Exception {
+    StatusRuntimeException exception = new StatusRuntimeException(io.grpc.Status.INVALID_ARGUMENT);
+    mockModelService.addException(exception);
+
+    try {
+      String model = "model104069929";
+      client.updateExplanationDatasetAsync(model).get();
+      Assert.fail("No exception raised");
+    } catch (ExecutionException e) {
+      Assert.assertEquals(InvalidArgumentException.class, e.getCause().getClass());
+      InvalidArgumentException apiException = ((InvalidArgumentException) e.getCause());
+      Assert.assertEquals(StatusCode.Code.INVALID_ARGUMENT, apiException.getStatusCode().getCode());
+    }
+  }
+
+  @Test
   public void deleteModelTest() throws Exception {
     Empty expectedResponse = Empty.newBuilder().build();
     Operation resultOperation =
@@ -967,12 +1059,14 @@ public class ModelServiceClientTest {
             .setName(
                 ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]")
                     .toString())
+            .setDisplayName("displayName1714148973")
             .setMetricsSchemaUri("metricsSchemaUri-182209912")
             .setMetrics(Value.newBuilder().build())
             .setCreateTime(Timestamp.newBuilder().build())
             .addAllSliceDimensions(new ArrayList<String>())
             .setModelExplanation(ModelExplanation.newBuilder().build())
             .addAllExplanationSpecs(new ArrayList<ModelEvaluation.ModelEvaluationExplanationSpec>())
+            .setMetadata(Value.newBuilder().build())
             .build();
     mockModelService.addResponse(expectedResponse);
 
@@ -1017,12 +1111,14 @@ public class ModelServiceClientTest {
             .setName(
                 ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]")
                     .toString())
+            .setDisplayName("displayName1714148973")
             .setMetricsSchemaUri("metricsSchemaUri-182209912")
             .setMetrics(Value.newBuilder().build())
             .setCreateTime(Timestamp.newBuilder().build())
             .addAllSliceDimensions(new ArrayList<String>())
             .setModelExplanation(ModelExplanation.newBuilder().build())
             .addAllExplanationSpecs(new ArrayList<ModelEvaluation.ModelEvaluationExplanationSpec>())
+            .setMetadata(Value.newBuilder().build())
             .build();
     mockModelService.addResponse(expectedResponse);
 
@@ -1067,12 +1163,14 @@ public class ModelServiceClientTest {
             .setName(
                 ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]")
                     .toString())
+            .setDisplayName("displayName1714148973")
             .setMetricsSchemaUri("metricsSchemaUri-182209912")
             .setMetrics(Value.newBuilder().build())
             .setCreateTime(Timestamp.newBuilder().build())
             .addAllSliceDimensions(new ArrayList<String>())
             .setModelExplanation(ModelExplanation.newBuilder().build())
             .addAllExplanationSpecs(new ArrayList<ModelEvaluation.ModelEvaluationExplanationSpec>())
+            .setMetadata(Value.newBuilder().build())
             .build();
     mockModelService.addResponse(expectedResponse);
 
@@ -1115,12 +1213,14 @@ public class ModelServiceClientTest {
             .setName(
                 ModelEvaluationName.of("[PROJECT]", "[LOCATION]", "[MODEL]", "[EVALUATION]")
                     .toString())
+            .setDisplayName("displayName1714148973")
             .setMetricsSchemaUri("metricsSchemaUri-182209912")
             .setMetrics(Value.newBuilder().build())
             .setCreateTime(Timestamp.newBuilder().build())
             .addAllSliceDimensions(new ArrayList<String>())
             .setModelExplanation(ModelExplanation.newBuilder().build())
             .addAllExplanationSpecs(new ArrayList<ModelEvaluation.ModelEvaluationExplanationSpec>())
+            .setMetadata(Value.newBuilder().build())
             .build();
     mockModelService.addResponse(expectedResponse);
 

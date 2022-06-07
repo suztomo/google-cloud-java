@@ -313,6 +313,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
      * The source file is a TFRecord file.
      * "csv"
      * The source file is a CSV file.
+     * "jsonl"
+     * The source file is a JSONL file.
      * </pre>
      *
      * <code>string data_format = 2;</code>
@@ -331,6 +333,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
      * The source file is a TFRecord file.
      * "csv"
      * The source file is a CSV file.
+     * "jsonl"
+     * The source file is a JSONL file.
      * </pre>
      *
      * <code>string data_format = 2;</code>
@@ -812,6 +816,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
      * The source file is a TFRecord file.
      * "csv"
      * The source file is a CSV file.
+     * "jsonl"
+     * The source file is a JSONL file.
      * </pre>
      *
      * <code>string data_format = 2;</code>
@@ -841,6 +847,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
      * The source file is a TFRecord file.
      * "csv"
      * The source file is a CSV file.
+     * "jsonl"
+     * The source file is a JSONL file.
      * </pre>
      *
      * <code>string data_format = 2;</code>
@@ -2051,6 +2059,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
        * The source file is a TFRecord file.
        * "csv"
        * The source file is a CSV file.
+       * "jsonl"
+       * The source file is a JSONL file.
        * </pre>
        *
        * <code>string data_format = 2;</code>
@@ -2079,6 +2089,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
        * The source file is a TFRecord file.
        * "csv"
        * The source file is a CSV file.
+       * "jsonl"
+       * The source file is a JSONL file.
        * </pre>
        *
        * <code>string data_format = 2;</code>
@@ -2107,6 +2119,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
        * The source file is a TFRecord file.
        * "csv"
        * The source file is a CSV file.
+       * "jsonl"
+       * The source file is a JSONL file.
        * </pre>
        *
        * <code>string data_format = 2;</code>
@@ -2134,6 +2148,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
        * The source file is a TFRecord file.
        * "csv"
        * The source file is a CSV file.
+       * "jsonl"
+       * The source file is a JSONL file.
        * </pre>
        *
        * <code>string data_format = 2;</code>
@@ -2157,6 +2173,8 @@ public final class ModelMonitoringObjectiveConfig extends com.google.protobuf.Ge
        * The source file is a TFRecord file.
        * "csv"
        * The source file is a CSV file.
+       * "jsonl"
+       * The source file is a JSONL file.
        * </pre>
        *
        * <code>string data_format = 2;</code>

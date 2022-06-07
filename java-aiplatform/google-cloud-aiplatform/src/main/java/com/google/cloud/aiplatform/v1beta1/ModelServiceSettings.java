@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,8 @@ import javax.annotation.Generated;
  * <p>For example, to set the total timeout of getModel to 30 seconds:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * ModelServiceSettings.Builder modelServiceSettingsBuilder = ModelServiceSettings.newBuilder();
  * modelServiceSettingsBuilder
  *     .getModelSettings()
@@ -108,6 +110,22 @@ public class ModelServiceSettings extends ClientSettings<ModelServiceSettings> {
   /** Returns the object with the settings used for calls to updateModel. */
   public UnaryCallSettings<UpdateModelRequest, Model> updateModelSettings() {
     return ((ModelServiceStubSettings) getStubSettings()).updateModelSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateExplanationDataset. */
+  public UnaryCallSettings<UpdateExplanationDatasetRequest, Operation>
+      updateExplanationDatasetSettings() {
+    return ((ModelServiceStubSettings) getStubSettings()).updateExplanationDatasetSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateExplanationDataset. */
+  public OperationCallSettings<
+          UpdateExplanationDatasetRequest,
+          UpdateExplanationDatasetResponse,
+          UpdateExplanationDatasetOperationMetadata>
+      updateExplanationDatasetOperationSettings() {
+    return ((ModelServiceStubSettings) getStubSettings())
+        .updateExplanationDatasetOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to deleteModel. */
@@ -315,6 +333,21 @@ public class ModelServiceSettings extends ClientSettings<ModelServiceSettings> {
     /** Returns the builder for the settings used for calls to updateModel. */
     public UnaryCallSettings.Builder<UpdateModelRequest, Model> updateModelSettings() {
       return getStubSettingsBuilder().updateModelSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateExplanationDataset. */
+    public UnaryCallSettings.Builder<UpdateExplanationDatasetRequest, Operation>
+        updateExplanationDatasetSettings() {
+      return getStubSettingsBuilder().updateExplanationDatasetSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateExplanationDataset. */
+    public OperationCallSettings.Builder<
+            UpdateExplanationDatasetRequest,
+            UpdateExplanationDatasetResponse,
+            UpdateExplanationDatasetOperationMetadata>
+        updateExplanationDatasetOperationSettings() {
+      return getStubSettingsBuilder().updateExplanationDatasetOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to deleteModel. */

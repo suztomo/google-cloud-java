@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ import javax.annotation.Generated;
  * <p>This class is for advanced usage and reflects the underlying API directly.
  */
 @Generated("by gapic-generator-java")
-@BetaApi("A restructuring of stub classes is planned, so this may break in the future")
+@BetaApi
 public class HttpJsonSecurityPoliciesStub extends SecurityPoliciesStub {
   private static final TypeRegistry typeRegistry =
       TypeRegistry.newBuilder().add(Operation.getDescriptor()).build();
@@ -97,6 +97,10 @@ public class HttpJsonSecurityPoliciesStub extends SecurityPoliciesStub {
                             Map<String, List<String>> fields = new HashMap<>();
                             ProtoRestSerializer<AddRuleSecurityPolicyRequest> serializer =
                                 ProtoRestSerializer.create();
+                            if (request.hasValidateOnly()) {
+                              serializer.putQueryParam(
+                                  fields, "validateOnly", request.getValidateOnly());
+                            }
                             return fields;
                           })
                       .setRequestBodyExtractor(
@@ -331,6 +335,10 @@ public class HttpJsonSecurityPoliciesStub extends SecurityPoliciesStub {
                             if (request.hasRequestId()) {
                               serializer.putQueryParam(fields, "requestId", request.getRequestId());
                             }
+                            if (request.hasValidateOnly()) {
+                              serializer.putQueryParam(
+                                  fields, "validateOnly", request.getValidateOnly());
+                            }
                             return fields;
                           })
                       .setRequestBodyExtractor(
@@ -556,6 +564,10 @@ public class HttpJsonSecurityPoliciesStub extends SecurityPoliciesStub {
                                 ProtoRestSerializer.create();
                             if (request.hasPriority()) {
                               serializer.putQueryParam(fields, "priority", request.getPriority());
+                            }
+                            if (request.hasValidateOnly()) {
+                              serializer.putQueryParam(
+                                  fields, "validateOnly", request.getValidateOnly());
                             }
                             return fields;
                           })

@@ -1811,7 +1811,6 @@ public class AnalyticsAdminServiceStubSettings
     return getDataStreamSettings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public AnalyticsAdminServiceStub createStub() throws IOException {
     if (getTransportChannelProvider()
         .getTransportName()

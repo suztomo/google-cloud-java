@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
  *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
  *   TrainingPipeline trainingPipeline = TrainingPipeline.newBuilder().build();
@@ -86,6 +88,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * PipelineServiceSettings pipelineServiceSettings =
  *     PipelineServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -97,6 +101,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * PipelineServiceSettings pipelineServiceSettings =
  *     PipelineServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * PipelineServiceClient pipelineServiceClient =
@@ -130,7 +136,6 @@ public class PipelineServiceClient implements BackgroundResource {
    * Constructs an instance of PipelineServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer using create(PipelineServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final PipelineServiceClient create(PipelineServiceStub stub) {
     return new PipelineServiceClient(stub);
   }
@@ -146,7 +151,6 @@ public class PipelineServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected PipelineServiceClient(PipelineServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -157,7 +161,6 @@ public class PipelineServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public PipelineServiceStub getStub() {
     return stub;
   }
@@ -177,6 +180,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   TrainingPipeline trainingPipeline = TrainingPipeline.newBuilder().build();
@@ -207,6 +212,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   TrainingPipeline trainingPipeline = TrainingPipeline.newBuilder().build();
@@ -237,6 +244,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CreateTrainingPipelineRequest request =
    *       CreateTrainingPipelineRequest.newBuilder()
@@ -261,6 +270,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CreateTrainingPipelineRequest request =
    *       CreateTrainingPipelineRequest.newBuilder()
@@ -286,6 +297,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   TrainingPipelineName name =
    *       TrainingPipelineName.of("[PROJECT]", "[LOCATION]", "[TRAINING_PIPELINE]");
@@ -312,6 +325,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String name =
    *       TrainingPipelineName.of("[PROJECT]", "[LOCATION]", "[TRAINING_PIPELINE]").toString();
@@ -336,6 +351,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   GetTrainingPipelineRequest request =
    *       GetTrainingPipelineRequest.newBuilder()
@@ -361,6 +378,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   GetTrainingPipelineRequest request =
    *       GetTrainingPipelineRequest.newBuilder()
@@ -387,6 +406,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (TrainingPipeline element :
@@ -415,6 +436,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (TrainingPipeline element :
@@ -441,6 +464,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   ListTrainingPipelinesRequest request =
    *       ListTrainingPipelinesRequest.newBuilder()
@@ -472,6 +497,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   ListTrainingPipelinesRequest request =
    *       ListTrainingPipelinesRequest.newBuilder()
@@ -502,6 +529,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   ListTrainingPipelinesRequest request =
    *       ListTrainingPipelinesRequest.newBuilder()
@@ -539,6 +568,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   TrainingPipelineName name =
    *       TrainingPipelineName.of("[PROJECT]", "[LOCATION]", "[TRAINING_PIPELINE]");
@@ -566,6 +597,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String name =
    *       TrainingPipelineName.of("[PROJECT]", "[LOCATION]", "[TRAINING_PIPELINE]").toString();
@@ -591,6 +624,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   DeleteTrainingPipelineRequest request =
    *       DeleteTrainingPipelineRequest.newBuilder()
@@ -617,6 +652,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   DeleteTrainingPipelineRequest request =
    *       DeleteTrainingPipelineRequest.newBuilder()
@@ -643,6 +680,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   DeleteTrainingPipelineRequest request =
    *       DeleteTrainingPipelineRequest.newBuilder()
@@ -679,6 +718,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   TrainingPipelineName name =
    *       TrainingPipelineName.of("[PROJECT]", "[LOCATION]", "[TRAINING_PIPELINE]");
@@ -715,6 +756,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String name =
    *       TrainingPipelineName.of("[PROJECT]", "[LOCATION]", "[TRAINING_PIPELINE]").toString();
@@ -749,6 +792,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CancelTrainingPipelineRequest request =
    *       CancelTrainingPipelineRequest.newBuilder()
@@ -784,6 +829,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CancelTrainingPipelineRequest request =
    *       CancelTrainingPipelineRequest.newBuilder()
@@ -810,6 +857,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   PipelineJob pipelineJob = PipelineJob.newBuilder().build();
@@ -845,6 +894,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   PipelineJob pipelineJob = PipelineJob.newBuilder().build();
@@ -880,6 +931,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CreatePipelineJobRequest request =
    *       CreatePipelineJobRequest.newBuilder()
@@ -905,6 +958,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CreatePipelineJobRequest request =
    *       CreatePipelineJobRequest.newBuilder()
@@ -930,6 +985,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   PipelineJobName name = PipelineJobName.of("[PROJECT]", "[LOCATION]", "[PIPELINE_JOB]");
    *   PipelineJob response = pipelineServiceClient.getPipelineJob(name);
@@ -953,6 +1010,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String name = PipelineJobName.of("[PROJECT]", "[LOCATION]", "[PIPELINE_JOB]").toString();
    *   PipelineJob response = pipelineServiceClient.getPipelineJob(name);
@@ -975,6 +1034,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   GetPipelineJobRequest request =
    *       GetPipelineJobRequest.newBuilder()
@@ -998,6 +1059,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   GetPipelineJobRequest request =
    *       GetPipelineJobRequest.newBuilder()
@@ -1021,6 +1084,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (PipelineJob element : pipelineServiceClient.listPipelineJobs(parent).iterateAll()) {
@@ -1048,6 +1113,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (PipelineJob element : pipelineServiceClient.listPipelineJobs(parent).iterateAll()) {
@@ -1073,6 +1140,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   ListPipelineJobsRequest request =
    *       ListPipelineJobsRequest.newBuilder()
@@ -1102,6 +1171,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   ListPipelineJobsRequest request =
    *       ListPipelineJobsRequest.newBuilder()
@@ -1132,6 +1203,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   ListPipelineJobsRequest request =
    *       ListPipelineJobsRequest.newBuilder()
@@ -1169,6 +1242,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   PipelineJobName name = PipelineJobName.of("[PROJECT]", "[LOCATION]", "[PIPELINE_JOB]");
    *   pipelineServiceClient.deletePipelineJobAsync(name).get();
@@ -1195,6 +1270,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String name = PipelineJobName.of("[PROJECT]", "[LOCATION]", "[PIPELINE_JOB]").toString();
    *   pipelineServiceClient.deletePipelineJobAsync(name).get();
@@ -1217,6 +1294,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   DeletePipelineJobRequest request =
    *       DeletePipelineJobRequest.newBuilder()
@@ -1241,6 +1320,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   DeletePipelineJobRequest request =
    *       DeletePipelineJobRequest.newBuilder()
@@ -1265,6 +1346,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   DeletePipelineJobRequest request =
    *       DeletePipelineJobRequest.newBuilder()
@@ -1296,6 +1379,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   PipelineJobName name = PipelineJobName.of("[PROJECT]", "[LOCATION]", "[PIPELINE_JOB]");
    *   pipelineServiceClient.cancelPipelineJob(name);
@@ -1329,6 +1414,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   String name = PipelineJobName.of("[PROJECT]", "[LOCATION]", "[PIPELINE_JOB]").toString();
    *   pipelineServiceClient.cancelPipelineJob(name);
@@ -1359,6 +1446,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CancelPipelineJobRequest request =
    *       CancelPipelineJobRequest.newBuilder()
@@ -1390,6 +1479,8 @@ public class PipelineServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (PipelineServiceClient pipelineServiceClient = PipelineServiceClient.create()) {
    *   CancelPipelineJobRequest request =
    *       CancelPipelineJobRequest.newBuilder()

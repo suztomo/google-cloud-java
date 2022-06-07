@@ -133,7 +133,6 @@ public class CloudTasksClient implements BackgroundResource {
    * Constructs an instance of CloudTasksClient, using the given stub for making calls. This is for
    * advanced usage - prefer using create(CloudTasksSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final CloudTasksClient create(CloudTasksStub stub) {
     return new CloudTasksClient(stub);
   }
@@ -147,7 +146,6 @@ public class CloudTasksClient implements BackgroundResource {
     this.stub = ((CloudTasksStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected CloudTasksClient(CloudTasksStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -157,7 +155,6 @@ public class CloudTasksClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public CloudTasksStub getStub() {
     return stub;
   }

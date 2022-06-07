@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
  *   DatasetName name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]");
  *   Dataset response = datasetServiceClient.getDataset(name);
@@ -83,6 +85,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * DatasetServiceSettings datasetServiceSettings =
  *     DatasetServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -93,6 +97,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * DatasetServiceSettings datasetServiceSettings =
  *     DatasetServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * DatasetServiceClient datasetServiceClient = DatasetServiceClient.create(datasetServiceSettings);
@@ -125,7 +131,6 @@ public class DatasetServiceClient implements BackgroundResource {
    * Constructs an instance of DatasetServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer using create(DatasetServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final DatasetServiceClient create(DatasetServiceStub stub) {
     return new DatasetServiceClient(stub);
   }
@@ -141,7 +146,6 @@ public class DatasetServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected DatasetServiceClient(DatasetServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -152,7 +156,6 @@ public class DatasetServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public DatasetServiceStub getStub() {
     return stub;
   }
@@ -172,6 +175,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Dataset dataset = Dataset.newBuilder().build();
@@ -201,6 +206,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Dataset dataset = Dataset.newBuilder().build();
@@ -227,6 +234,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   CreateDatasetRequest request =
    *       CreateDatasetRequest.newBuilder()
@@ -252,6 +261,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   CreateDatasetRequest request =
    *       CreateDatasetRequest.newBuilder()
@@ -277,6 +288,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   CreateDatasetRequest request =
    *       CreateDatasetRequest.newBuilder()
@@ -301,6 +314,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DatasetName name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]");
    *   Dataset response = datasetServiceClient.getDataset(name);
@@ -323,6 +338,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]").toString();
    *   Dataset response = datasetServiceClient.getDataset(name);
@@ -344,6 +361,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   GetDatasetRequest request =
    *       GetDatasetRequest.newBuilder()
@@ -368,6 +387,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   GetDatasetRequest request =
    *       GetDatasetRequest.newBuilder()
@@ -391,6 +412,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   Dataset dataset = Dataset.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -417,6 +440,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   UpdateDatasetRequest request =
    *       UpdateDatasetRequest.newBuilder()
@@ -441,6 +466,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   UpdateDatasetRequest request =
    *       UpdateDatasetRequest.newBuilder()
@@ -464,6 +491,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (Dataset element : datasetServiceClient.listDatasets(parent).iterateAll()) {
@@ -491,6 +520,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (Dataset element : datasetServiceClient.listDatasets(parent).iterateAll()) {
@@ -515,6 +546,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListDatasetsRequest request =
    *       ListDatasetsRequest.newBuilder()
@@ -545,6 +578,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListDatasetsRequest request =
    *       ListDatasetsRequest.newBuilder()
@@ -576,6 +611,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListDatasetsRequest request =
    *       ListDatasetsRequest.newBuilder()
@@ -612,6 +649,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DatasetName name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]");
    *   datasetServiceClient.deleteDatasetAsync(name).get();
@@ -636,6 +675,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]").toString();
    *   datasetServiceClient.deleteDatasetAsync(name).get();
@@ -658,6 +699,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DeleteDatasetRequest request =
    *       DeleteDatasetRequest.newBuilder()
@@ -682,6 +725,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DeleteDatasetRequest request =
    *       DeleteDatasetRequest.newBuilder()
@@ -706,6 +751,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DeleteDatasetRequest request =
    *       DeleteDatasetRequest.newBuilder()
@@ -729,6 +776,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DatasetName name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]");
    *   List<ImportDataConfig> importConfigs = new ArrayList<>();
@@ -759,6 +808,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]").toString();
    *   List<ImportDataConfig> importConfigs = new ArrayList<>();
@@ -786,6 +837,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ImportDataRequest request =
    *       ImportDataRequest.newBuilder()
@@ -811,6 +864,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ImportDataRequest request =
    *       ImportDataRequest.newBuilder()
@@ -836,6 +891,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ImportDataRequest request =
    *       ImportDataRequest.newBuilder()
@@ -859,6 +916,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DatasetName name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]");
    *   ExportDataConfig exportConfig = ExportDataConfig.newBuilder().build();
@@ -888,6 +947,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String name = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]").toString();
    *   ExportDataConfig exportConfig = ExportDataConfig.newBuilder().build();
@@ -914,6 +975,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ExportDataRequest request =
    *       ExportDataRequest.newBuilder()
@@ -939,6 +1002,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ExportDataRequest request =
    *       ExportDataRequest.newBuilder()
@@ -964,6 +1029,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ExportDataRequest request =
    *       ExportDataRequest.newBuilder()
@@ -987,6 +1054,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DatasetName parent = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]");
    *   for (DataItem element : datasetServiceClient.listDataItems(parent).iterateAll()) {
@@ -1014,6 +1083,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String parent = DatasetName.of("[PROJECT]", "[LOCATION]", "[DATASET]").toString();
    *   for (DataItem element : datasetServiceClient.listDataItems(parent).iterateAll()) {
@@ -1038,6 +1109,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListDataItemsRequest request =
    *       ListDataItemsRequest.newBuilder()
@@ -1068,6 +1141,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListDataItemsRequest request =
    *       ListDataItemsRequest.newBuilder()
@@ -1099,6 +1174,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListDataItemsRequest request =
    *       ListDataItemsRequest.newBuilder()
@@ -1135,6 +1212,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   AnnotationSpecName name =
    *       AnnotationSpecName.of("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]");
@@ -1161,6 +1240,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String name =
    *       AnnotationSpecName.of("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]")
@@ -1185,6 +1266,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   GetAnnotationSpecRequest request =
    *       GetAnnotationSpecRequest.newBuilder()
@@ -1211,6 +1294,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   GetAnnotationSpecRequest request =
    *       GetAnnotationSpecRequest.newBuilder()
@@ -1237,6 +1322,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   DataItemName parent = DataItemName.of("[PROJECT]", "[LOCATION]", "[DATASET]", "[DATA_ITEM]");
    *   for (Annotation element : datasetServiceClient.listAnnotations(parent).iterateAll()) {
@@ -1264,6 +1351,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   String parent =
    *       DataItemName.of("[PROJECT]", "[LOCATION]", "[DATASET]", "[DATA_ITEM]").toString();
@@ -1289,6 +1378,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListAnnotationsRequest request =
    *       ListAnnotationsRequest.newBuilder()
@@ -1320,6 +1411,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListAnnotationsRequest request =
    *       ListAnnotationsRequest.newBuilder()
@@ -1352,6 +1445,8 @@ public class DatasetServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (DatasetServiceClient datasetServiceClient = DatasetServiceClient.create()) {
    *   ListAnnotationsRequest request =
    *       ListAnnotationsRequest.newBuilder()

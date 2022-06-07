@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 package com.google.cloud.aiplatform.v1;
 
-import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.rpc.ServerStreamingCallable;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -34,6 +33,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
  *     FeaturestoreOnlineServingServiceClient.create()) {
  *   EntityTypeName entityType =
@@ -73,6 +74,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * FeaturestoreOnlineServingServiceSettings featurestoreOnlineServingServiceSettings =
  *     FeaturestoreOnlineServingServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -84,6 +87,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * FeaturestoreOnlineServingServiceSettings featurestoreOnlineServingServiceSettings =
  *     FeaturestoreOnlineServingServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
@@ -117,7 +122,6 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
    * making calls. This is for advanced usage - prefer using
    * create(FeaturestoreOnlineServingServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final FeaturestoreOnlineServingServiceClient create(
       FeaturestoreOnlineServingServiceStub stub) {
     return new FeaturestoreOnlineServingServiceClient(stub);
@@ -135,7 +139,6 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
         ((FeaturestoreOnlineServingServiceStubSettings) settings.getStubSettings()).createStub();
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected FeaturestoreOnlineServingServiceClient(FeaturestoreOnlineServingServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -145,7 +148,6 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public FeaturestoreOnlineServingServiceStub getStub() {
     return stub;
   }
@@ -158,6 +160,8 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
    *     FeaturestoreOnlineServingServiceClient.create()) {
    *   EntityTypeName entityType =
@@ -190,6 +194,8 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
    *     FeaturestoreOnlineServingServiceClient.create()) {
    *   String entityType =
@@ -221,6 +227,8 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
    *     FeaturestoreOnlineServingServiceClient.create()) {
    *   ReadFeatureValuesRequest request =
@@ -251,6 +259,8 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
    *     FeaturestoreOnlineServingServiceClient.create()) {
    *   ReadFeatureValuesRequest request =
@@ -281,6 +291,8 @@ public class FeaturestoreOnlineServingServiceClient implements BackgroundResourc
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (FeaturestoreOnlineServingServiceClient featurestoreOnlineServingServiceClient =
    *     FeaturestoreOnlineServingServiceClient.create()) {
    *   StreamingReadFeatureValuesRequest request =

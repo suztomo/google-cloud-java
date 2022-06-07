@@ -151,7 +151,6 @@ public class ArtifactRegistryClient implements BackgroundResource {
    * Constructs an instance of ArtifactRegistryClient, using the given stub for making calls. This
    * is for advanced usage - prefer using create(ArtifactRegistrySettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final ArtifactRegistryClient create(ArtifactRegistryStub stub) {
     return new ArtifactRegistryClient(stub);
   }
@@ -167,7 +166,6 @@ public class ArtifactRegistryClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected ArtifactRegistryClient(ArtifactRegistryStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -178,7 +176,6 @@ public class ArtifactRegistryClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public ArtifactRegistryStub getStub() {
     return stub;
   }

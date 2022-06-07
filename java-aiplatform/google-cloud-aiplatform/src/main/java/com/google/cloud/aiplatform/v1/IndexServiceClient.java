@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package com.google.cloud.aiplatform.v1;
 
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
-import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
@@ -47,6 +46,8 @@ import javax.annotation.Generated;
  * calls that map to API methods. Sample code to get started:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
  *   IndexName name = IndexName.of("[PROJECT]", "[LOCATION]", "[INDEX]");
  *   Index response = indexServiceClient.getIndex(name);
@@ -82,6 +83,8 @@ import javax.annotation.Generated;
  * <p>To customize credentials:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * IndexServiceSettings indexServiceSettings =
  *     IndexServiceSettings.newBuilder()
  *         .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
@@ -92,6 +95,8 @@ import javax.annotation.Generated;
  * <p>To customize the endpoint:
  *
  * <pre>{@code
+ * // This snippet has been automatically generated for illustrative purposes only.
+ * // It may require modifications to work in your environment.
  * IndexServiceSettings indexServiceSettings =
  *     IndexServiceSettings.newBuilder().setEndpoint(myEndpoint).build();
  * IndexServiceClient indexServiceClient = IndexServiceClient.create(indexServiceSettings);
@@ -122,7 +127,6 @@ public class IndexServiceClient implements BackgroundResource {
    * Constructs an instance of IndexServiceClient, using the given stub for making calls. This is
    * for advanced usage - prefer using create(IndexServiceSettings).
    */
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public static final IndexServiceClient create(IndexServiceStub stub) {
     return new IndexServiceClient(stub);
   }
@@ -138,7 +142,6 @@ public class IndexServiceClient implements BackgroundResource {
     this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected IndexServiceClient(IndexServiceStub stub) {
     this.settings = null;
     this.stub = stub;
@@ -149,7 +152,6 @@ public class IndexServiceClient implements BackgroundResource {
     return settings;
   }
 
-  @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public IndexServiceStub getStub() {
     return stub;
   }
@@ -169,6 +171,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   Index index = Index.newBuilder().build();
@@ -198,6 +202,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   Index index = Index.newBuilder().build();
@@ -224,6 +230,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   CreateIndexRequest request =
    *       CreateIndexRequest.newBuilder()
@@ -249,6 +257,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   CreateIndexRequest request =
    *       CreateIndexRequest.newBuilder()
@@ -274,6 +284,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   CreateIndexRequest request =
    *       CreateIndexRequest.newBuilder()
@@ -297,6 +309,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   IndexName name = IndexName.of("[PROJECT]", "[LOCATION]", "[INDEX]");
    *   Index response = indexServiceClient.getIndex(name);
@@ -320,6 +334,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   String name = IndexName.of("[PROJECT]", "[LOCATION]", "[INDEX]").toString();
    *   Index response = indexServiceClient.getIndex(name);
@@ -342,6 +358,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   GetIndexRequest request =
    *       GetIndexRequest.newBuilder()
@@ -365,6 +383,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   GetIndexRequest request =
    *       GetIndexRequest.newBuilder()
@@ -387,6 +407,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
    *   for (Index element : indexServiceClient.listIndexes(parent).iterateAll()) {
@@ -414,6 +436,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
    *   for (Index element : indexServiceClient.listIndexes(parent).iterateAll()) {
@@ -438,6 +462,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   ListIndexesRequest request =
    *       ListIndexesRequest.newBuilder()
@@ -467,6 +493,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   ListIndexesRequest request =
    *       ListIndexesRequest.newBuilder()
@@ -496,6 +524,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   ListIndexesRequest request =
    *       ListIndexesRequest.newBuilder()
@@ -531,6 +561,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   Index index = Index.newBuilder().build();
    *   FieldMask updateMask = FieldMask.newBuilder().build();
@@ -557,6 +589,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   UpdateIndexRequest request =
    *       UpdateIndexRequest.newBuilder()
@@ -582,6 +616,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   UpdateIndexRequest request =
    *       UpdateIndexRequest.newBuilder()
@@ -607,6 +643,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   UpdateIndexRequest request =
    *       UpdateIndexRequest.newBuilder()
@@ -631,6 +669,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   IndexName name = IndexName.of("[PROJECT]", "[LOCATION]", "[INDEX]");
    *   indexServiceClient.deleteIndexAsync(name).get();
@@ -655,6 +695,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   String name = IndexName.of("[PROJECT]", "[LOCATION]", "[INDEX]").toString();
    *   indexServiceClient.deleteIndexAsync(name).get();
@@ -678,6 +720,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   DeleteIndexRequest request =
    *       DeleteIndexRequest.newBuilder()
@@ -703,6 +747,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   DeleteIndexRequest request =
    *       DeleteIndexRequest.newBuilder()
@@ -728,6 +774,8 @@ public class IndexServiceClient implements BackgroundResource {
    * <p>Sample code:
    *
    * <pre>{@code
+   * // This snippet has been automatically generated for illustrative purposes only.
+   * // It may require modifications to work in your environment.
    * try (IndexServiceClient indexServiceClient = IndexServiceClient.create()) {
    *   DeleteIndexRequest request =
    *       DeleteIndexRequest.newBuilder()

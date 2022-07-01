@@ -133,6 +133,7 @@
     <module>java-workflow-executions</module>
     <module>java-workflows</module>
 
+    <module>CoverageAggregator</module>
   </modules>
 
   <build>

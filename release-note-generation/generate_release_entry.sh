@@ -49,7 +49,9 @@ for commit_message_file in "$@"; do
   message=$(cat "${commit_message_file}")
   matching_change=$(echo "${message}" |grep "feat: \\[${service}\\]" || true)
   if [ -n "${matching_change}" ]; then
-    module_specific_change+="- ${matching_change} [${short_hash}](${COMMIT_URL_PREFIX}${commit_hash})"
+    formatted_change=$(echo "${matching_change}" | sed -e 's/^/- /g' -e "s|$| [${short_hash}](${COMMIT_URL_PREFIX}${commit_hash})|g")
+    module_specific_change+="${formatted_change}\n"
+    #  [${short_hash}](${COMMIT_URL_PREFIX}${commit_hash})
   fi
   matching_change=$(echo "${message}" |grep "feat: \\[Many APIs\\]" || true)
   repository_wide_change+=$matching_change

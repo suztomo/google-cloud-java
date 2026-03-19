@@ -77,6 +77,25 @@ public class HttpTracingRequestInitializer implements HttpRequestInitializer {
     String host = request.getUrl().getHost();
     int port = request.getUrl().getPort();
     addInitialHttpAttributesToSpan(span, host, port);
+
+    HttpResponseInterceptor originalInterceptor = request.getResponseInterceptor();
+    request.setResponseInterceptor(
+        response -> {
+          addCommonResponseAttributesToSpan(request, response, span);
+          if (originalInterceptor != null) {
+            originalInterceptor.interceptResponse(response);
+          }
+        });
+
+    HttpUnsuccessfulResponseHandler originalHandler = request.getUnsuccessfulResponseHandler();
+    request.setUnsuccessfulResponseHandler(
+        (request1, response, supportsRetry) -> {
+          addCommonResponseAttributesToSpan(request1, response, span);
+          if (originalHandler != null) {
+            return originalHandler.handleResponse(request1, response, supportsRetry);
+          }
+          return false;
+        });
   }
 
   /** Add initial HTTP attributes to the existing active span */
@@ -88,5 +107,33 @@ public class HttpTracingRequestInitializer implements HttpRequestInitializer {
       span.setAttribute(BigQueryTelemetryTracer.SERVER_PORT, port.longValue());
     }
     // TODO add full sanitized url, url domain, request method
+  }
+
+  private static void addCommonResponseAttributesToSpan(
+      HttpRequest request, HttpResponse response, Span span) {
+    // We add request body size and update request method after we receive response as
+    // the data is not always available until after the http request execution
+    addRequestBodySizeToSpan(request, span);
+    span.setAttribute(HTTP_REQUEST_METHOD, request.getRequestMethod());
+    addResponseBodySizeToSpan(response, span);
+    span.setAttribute(HTTP_RESPONSE_STATUS_CODE, response.getStatusCode());
+  }
+
+  static void addRequestBodySizeToSpan(HttpRequest request, Span span) {
+    try {
+      if (request.getContent() != null && request.getEncoding() == null) {
+        span.setAttribute(HTTP_REQUEST_BODY_SIZE, request.getContent().getLength());
+      }
+    } catch (IOException e) {
+      // Ignore - body size not available
+    }
+  }
+
+  static void addResponseBodySizeToSpan(HttpResponse response, Span span) {
+    Long contentLength = response.getHeaders().getContentLength();
+    if (contentLength != null && contentLength > 0) {
+      span.setAttribute(HTTP_RESPONSE_BODY_SIZE, contentLength);
+    }
+    // TODO handle chunked responses
   }
 }

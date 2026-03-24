@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+name: java-spanner-jdbc Integration tests against emulator
+env:
+  BUILD_SUBDIR: java-spanner-jdbc
+jobs:
+  filter:
+    runs-on: ubuntu-latest
+    outputs:
+      library: ${{ steps.filter.outputs.library }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          library:
+            - 'java-spanner-jdbc/**'
+  units:
+    needs: filter
+    if: ${{ needs.filter.outputs.library == 'true' }}
+    runs-on: ubuntu-latest
+
+    services:
+      emulator:
+        image: gcr.io/cloud-spanner-emulator/emulator:latest
+        ports:
+          - 9010:9010
+          - 9020:9020
+
+    steps:
+    - uses: actions/checkout@v6
+    - uses: actions/setup-java@v5
+      with:
+        distribution: temurin
+        java-version: 8
+    - run: java -version
+    - run: .kokoro/build.sh
+    - run: mvn -B -Dspanner.testenv.instance="" -Penable-integration-tests -DtrimStackTrace=false -Dclirr.skip=true -Denforcer.skip=true -fae verify
+      env:
+        JOB_TYPE: test
+        SPANNER_EMULATOR_HOST: localhost:9010
+        GOOGLE_CLOUD_PROJECT: emulator-test-project

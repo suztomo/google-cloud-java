@@ -15,6 +15,7 @@
  */
 package com.google.cloud.bigquery.spi.v2;
 
+import static com.google.cloud.bigquery.spi.v2.HttpBigQueryRpc.RESOURCE_PROJECT_PREFIX;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -140,7 +141,11 @@ public class HttpBigQueryRpcTest {
   }
 
   private void verifySpan(
-      String spanName, String service, String method, Map<String, String> attributes) {
+      String spanName,
+      String service,
+      String method,
+      String gcpResourceDestinationId,
+      Map<String, String> attributes) {
     List<SpanData> spans = spanExporter.getFinishedSpanItems();
     assertThat(spans).isNotEmpty();
     SpanData rpcSpan =
@@ -149,6 +154,10 @@ public class HttpBigQueryRpcTest {
     assertEquals(service, rpcSpan.getAttributes().get(AttributeKey.stringKey("bq.rpc.service")));
     assertEquals(method, rpcSpan.getAttributes().get(AttributeKey.stringKey("bq.rpc.method")));
     assertEquals("http", rpcSpan.getAttributes().get(AttributeKey.stringKey("bq.rpc.system")));
+
+    assertEquals(
+        gcpResourceDestinationId,
+        rpcSpan.getAttributes().get(BigQueryTelemetryTracer.GCP_RESOURCE_DESTINATION_ID));
 
     if (attributes != null) {
       for (Map.Entry<String, String> entry : attributes.entrySet()) {
@@ -215,7 +224,11 @@ public class HttpBigQueryRpcTest {
 
       // Verify that span was ended (collected) despite the error
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.getDataset", "DatasetService", "GetDataset", null);
+          "com.google.cloud.bigquery.BigQueryRpc.getDataset",
+          "DatasetService",
+          "GetDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
+          null);
     }
 
     @Test
@@ -233,11 +246,11 @@ public class HttpBigQueryRpcTest {
 
       rpc.getDatasetSkipExceptionTranslation(PROJECT_ID, DATASET_ID, new HashMap<>());
 
-      verifyRequest("GET", "/projects/" + PROJECT_ID + "/datasets/" + DATASET_ID);
       verifySpan(
           "com.google.cloud.bigquery.BigQueryRpc.getDataset",
           "DatasetService",
           "GetDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           Collections.singletonMap("bq.rpc.response.dataset.id", PROJECT_ID + ":" + DATASET_ID));
     }
 
@@ -253,6 +266,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.listDatasets",
           "DatasetService",
           "ListDatasets",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets",
           Collections.singletonMap("bq.rpc.next_page_token", "next-page-token"));
     }
 
@@ -271,6 +285,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.createDataset",
           "DatasetService",
           "InsertDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           Collections.singletonMap("bq.rpc.response.dataset.id", PROJECT_ID + ":" + DATASET_ID));
     }
 
@@ -286,6 +301,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.deleteDataset",
           "DatasetService",
           "DeleteDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           null);
     }
 
@@ -304,6 +320,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.patchDataset",
           "DatasetService",
           "PatchDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           Collections.singletonMap("bq.rpc.response.dataset.id", PROJECT_ID + ":" + DATASET_ID));
     }
 
@@ -326,6 +343,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getTable",
           "TableService",
           "GetTable",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           Collections.singletonMap(
               "bq.rpc.response.table.id", PROJECT_ID + ":" + DATASET_ID + "." + TABLE_ID));
     }
@@ -342,6 +360,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.listTables",
           "TableService",
           "ListTables",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables",
           Collections.singletonMap("bq.rpc.next_page_token", "next-page-token"));
     }
 
@@ -369,6 +388,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.createTable",
           "TableService",
           "InsertTable",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           Collections.singletonMap(
               "bq.rpc.response.table.id", PROJECT_ID + ":" + DATASET_ID + "." + TABLE_ID));
     }
@@ -383,7 +403,11 @@ public class HttpBigQueryRpcTest {
       verifyRequest(
           "DELETE", "/projects/" + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID);
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.deleteTable", "TableService", "DeleteTable", null);
+          "com.google.cloud.bigquery.BigQueryRpc.deleteTable",
+          "TableService",
+          "DeleteTable",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
+          null);
     }
 
     @Test
@@ -411,6 +435,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.patchTable",
           "TableService",
           "PatchTable",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           Collections.singletonMap(
               "bq.rpc.response.table.id", PROJECT_ID + ":" + DATASET_ID + "." + TABLE_ID));
     }
@@ -434,6 +459,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getModel",
           "ModelService",
           "GetModel",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/models/" + MODEL_ID,
           Collections.singletonMap("bq.rpc.response.model.id", MODEL_ID));
     }
 
@@ -449,6 +475,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.listModels",
           "ModelService",
           "ListModels",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/models",
           Collections.singletonMap("bq.rpc.next_page_token", "next-page-token"));
     }
 
@@ -477,6 +504,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.patchModel",
           "ModelService",
           "PatchModel",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/models/" + MODEL_ID,
           Collections.singletonMap("bq.rpc.response.model.id", MODEL_ID));
     }
 
@@ -490,7 +518,11 @@ public class HttpBigQueryRpcTest {
       verifyRequest(
           "DELETE", "/projects/" + PROJECT_ID + "/datasets/" + DATASET_ID + "/models/" + MODEL_ID);
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.deleteModel", "ModelService", "DeleteModel", null);
+          "com.google.cloud.bigquery.BigQueryRpc.deleteModel",
+          "ModelService",
+          "DeleteModel",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/models/" + MODEL_ID,
+          null);
     }
 
     @Test
@@ -512,6 +544,12 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getRoutine",
           "RoutineService",
           "GetRoutine",
+          RESOURCE_PROJECT_PREFIX
+              + PROJECT_ID
+              + "/datasets/"
+              + DATASET_ID
+              + "/routines/"
+              + ROUTINE_ID,
           Collections.singletonMap("bq.rpc.response.routine.id", ROUTINE_ID));
     }
 
@@ -527,6 +565,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.listRoutines",
           "RoutineService",
           "ListRoutines",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/routines",
           Collections.singletonMap("bq.rpc.next_page_token", "next-page-token"));
     }
 
@@ -554,6 +593,12 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.createRoutine",
           "RoutineService",
           "InsertRoutine",
+          RESOURCE_PROJECT_PREFIX
+              + PROJECT_ID
+              + "/datasets/"
+              + DATASET_ID
+              + "/routines/"
+              + ROUTINE_ID,
           Collections.singletonMap("bq.rpc.response.routine.id", ROUTINE_ID));
     }
 
@@ -571,6 +616,12 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.deleteRoutine",
           "RoutineService",
           "DeleteRoutine",
+          RESOURCE_PROJECT_PREFIX
+              + PROJECT_ID
+              + "/datasets/"
+              + DATASET_ID
+              + "/routines/"
+              + ROUTINE_ID,
           null);
     }
 
@@ -599,6 +650,12 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.updateRoutine",
           "RoutineService",
           "UpdateRoutine",
+          RESOURCE_PROJECT_PREFIX
+              + PROJECT_ID
+              + "/datasets/"
+              + DATASET_ID
+              + "/routines/"
+              + ROUTINE_ID,
           Collections.singletonMap("bq.rpc.response.routine.id", ROUTINE_ID));
     }
 
@@ -619,7 +676,11 @@ public class HttpBigQueryRpcTest {
               + TABLE_ID
               + "/insertAll");
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.insertAll", "TableDataService", "InsertAll", null);
+          "com.google.cloud.bigquery.BigQueryRpc.insertAll",
+          "TableDataService",
+          "InsertAll",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
+          null);
     }
 
     @Test
@@ -632,7 +693,11 @@ public class HttpBigQueryRpcTest {
           "GET",
           "/projects/" + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID + "/data");
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.listTableData", "TableDataService", "List", null);
+          "com.google.cloud.bigquery.BigQueryRpc.listTableData",
+          "TableDataService",
+          "List",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
+          null);
     }
 
     @Test
@@ -649,6 +714,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.listTableDataWithRowLimit",
           "TableDataService",
           "List",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           null);
     }
 
@@ -668,7 +734,11 @@ public class HttpBigQueryRpcTest {
       attributes.put("bq.rpc.response.job.id", PROJECT_ID + ":" + JOB_ID);
       attributes.put("bq.rpc.response.job.status.state", "DONE");
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.getJob", "JobService", "GetJob", attributes);
+          "com.google.cloud.bigquery.BigQueryRpc.getJob",
+          "JobService",
+          "GetJob",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs/" + JOB_ID,
+          attributes);
     }
 
     @Test
@@ -687,7 +757,11 @@ public class HttpBigQueryRpcTest {
       attributes.put("bq.rpc.response.job.id", PROJECT_ID + ":" + JOB_ID);
       attributes.put("bq.rpc.response.job.status.state", "DONE");
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.getQueryJob", "JobService", "GetJob", attributes);
+          "com.google.cloud.bigquery.BigQueryRpc.getQueryJob",
+          "JobService",
+          "GetJob",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs/" + JOB_ID,
+          attributes);
     }
 
     @Test
@@ -702,6 +776,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.listJobs",
           "JobService",
           "ListJobs",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs",
           Collections.singletonMap("bq.rpc.next_page_token", "next-page-token"));
     }
 
@@ -723,7 +798,11 @@ public class HttpBigQueryRpcTest {
       attributes.put("bq.rpc.response.job.id", PROJECT_ID + ":" + JOB_ID);
       attributes.put("bq.rpc.response.job.status.state", "DONE");
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.createJob", "JobService", "InsertJob", attributes);
+          "com.google.cloud.bigquery.BigQueryRpc.createJob",
+          "JobService",
+          "InsertJob",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs",
+          attributes);
     }
 
     @Test
@@ -747,6 +826,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.createJobForQuery",
           "JobService",
           "InsertJob",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs",
           attributes);
     }
 
@@ -758,7 +838,11 @@ public class HttpBigQueryRpcTest {
 
       verifyRequest("POST", "/projects/" + PROJECT_ID + "/jobs/" + JOB_ID + "/cancel");
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.cancelJob", "JobService", "CancelJob", null);
+          "com.google.cloud.bigquery.BigQueryRpc.cancelJob",
+          "JobService",
+          "CancelJob",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs/" + JOB_ID,
+          null);
     }
 
     @Test
@@ -770,7 +854,11 @@ public class HttpBigQueryRpcTest {
 
       verifyRequest("DELETE", "/projects/" + PROJECT_ID + "/jobs/" + JOB_ID);
       verifySpan(
-          "com.google.cloud.bigquery.BigQueryRpc.deleteJob", "JobService", "DeleteJob", null);
+          "com.google.cloud.bigquery.BigQueryRpc.deleteJob",
+          "JobService",
+          "DeleteJob",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs/" + JOB_ID,
+          null);
     }
 
     @Test
@@ -784,6 +872,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getQueryResults",
           "JobService",
           "GetQueryResults",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs/" + JOB_ID,
           null);
     }
 
@@ -799,6 +888,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getQueryResultsWithRowLimit",
           "JobService",
           "GetQueryResults",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs/" + JOB_ID,
           null);
     }
 
@@ -809,7 +899,12 @@ public class HttpBigQueryRpcTest {
       rpc.queryRpcSkipExceptionTranslation(PROJECT_ID, new QueryRequest());
 
       verifyRequest("POST", "/projects/" + PROJECT_ID + "/queries");
-      verifySpan("com.google.cloud.bigquery.BigQueryRpc.queryRpc", "JobService", "Query", null);
+      verifySpan(
+          "com.google.cloud.bigquery.BigQueryRpc.queryRpc",
+          "JobService",
+          "Query",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/jobs",
+          null);
     }
 
     @Test
@@ -833,6 +928,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getIamPolicy",
           "TableService",
           "GetIamPolicy",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           null);
     }
 
@@ -858,6 +954,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.setIamPolicy",
           "TableService",
           "SetIamPolicy",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           null);
     }
 
@@ -883,6 +980,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.testIamPermissions",
           "TableService",
           "TestIamPermissions",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID + "/tables/" + TABLE_ID,
           null);
     }
 
@@ -912,6 +1010,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getDataset",
           "DatasetService",
           "GetDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           expectedAttributes);
     }
 
@@ -935,6 +1034,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getDataset",
           "DatasetService",
           "GetDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           Collections.singletonMap("bq.rpc.response.dataset.id", PROJECT_ID + ":" + DATASET_ID));
 
       List<SpanData> spans = spanExporter.getFinishedSpanItems();
@@ -1034,6 +1134,7 @@ public class HttpBigQueryRpcTest {
           "com.google.cloud.bigquery.BigQueryRpc.getDataset",
           "DatasetService",
           "GetDataset",
+          RESOURCE_PROJECT_PREFIX + PROJECT_ID + "/datasets/" + DATASET_ID,
           Collections.singletonMap("bq.rpc.response.dataset.id", PROJECT_ID + ":" + DATASET_ID));
 
       List<SpanData> spans = spanExporter.getFinishedSpanItems();

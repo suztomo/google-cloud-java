@@ -90,6 +90,7 @@ public class HttpBigQueryRpc implements BigQueryRpc {
   private static final String BASE_RESUMABLE_URI = "upload/bigquery/v2/projects/";
   static final String HTTP_TRACING_DEV_GATE_PROPERTY =
       "com.google.cloud.bigquery.http.tracing.dev.enabled";
+  static final String RESOURCE_PROJECT_PREFIX = "//bigquery.googleapis.com/projects/";
   // see:
   // https://cloud.google.com/bigquery/loading-data-post-request#resume-upload
   private static final int HTTP_RESUME_INCOMPLETE = 308;
@@ -178,11 +179,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.getDataset",
             "DatasetService",
             "GetDataset",
+            gcpResourceDestinationId,
             options),
         span -> {
           Dataset dataset = bqGetRequest.execute();
@@ -220,11 +230,19 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.listDatasets",
             "DatasetService",
             "ListDatasets",
+            gcpResourceDestinationId,
             options),
         span -> {
           if (span != null) {
@@ -269,11 +287,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(dataset.getDatasetReference().getProjectId())
+            .append("/datasets/")
+            .append(dataset.getDatasetReference().getDatasetId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.createDataset",
             "DatasetService",
             "InsertDataset",
+            gcpResourceDestinationId,
             options),
         span -> {
           Dataset datasetResponse = bqCreateRequest.execute();
@@ -311,11 +338,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(reference.getProjectId())
+            .append("/datasets/")
+            .append(reference.getDatasetId())
+            .append("/tables/")
+            .append(reference.getTableId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.createTable",
             "TableService",
             "InsertTable",
+            gcpResourceDestinationId,
             options),
         span -> {
           Table tableResponse = bqCreateRequest.execute();
@@ -351,11 +389,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(reference.getProjectId())
+            .append("/datasets/")
+            .append(reference.getDatasetId())
+            .append("/routines/")
+            .append(reference.getRoutineId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.createRoutine",
             "RoutineService",
             "InsertRoutine",
+            gcpResourceDestinationId,
             options),
         span -> {
           Routine routineResponse = bqCreateRequest.execute();
@@ -394,9 +443,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.createJob", "JobService", "InsertJob", options),
+            "com.google.cloud.bigquery.BigQueryRpc.createJob",
+            "JobService",
+            "InsertJob",
+            gcpResourceDestinationId,
+            options),
         span -> {
           Job jobResponse = bqCreateRequest.execute();
           if (span != null) {
@@ -431,11 +491,19 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.createJobForQuery",
             "JobService",
             "InsertJob",
+            gcpResourceDestinationId,
             null),
         span -> {
           Job jobResponse = bqCreateRequest.execute();
@@ -476,11 +544,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.deleteDataset",
             "DatasetService",
             "DeleteDataset",
+            gcpResourceDestinationId,
             options),
         span -> {
           bqDeleteRequest.execute();
@@ -518,11 +595,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(reference.getProjectId())
+            .append("/datasets/")
+            .append(reference.getDatasetId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.patchDataset",
             "DatasetService",
             "PatchDataset",
+            gcpResourceDestinationId,
             options),
         span -> {
           Dataset datasetResponse = bqPatchRequest.execute();
@@ -562,11 +648,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(reference.getProjectId())
+            .append("/datasets/")
+            .append(reference.getDatasetId())
+            .append("/tables/")
+            .append(reference.getTableId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.patchTable",
             "TableService",
             "PatchTable",
+            gcpResourceDestinationId,
             options),
         span -> {
           Table tableResponse = bqPatchRequest.execute();
@@ -608,9 +705,23 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/tables/")
+            .append(tableId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.getTable", "TableService", "GetTable", options),
+            "com.google.cloud.bigquery.BigQueryRpc.getTable",
+            "TableService",
+            "GetTable",
+            gcpResourceDestinationId,
+            options),
         span -> {
           Table tableResponse = bqGetRequest.execute();
           if (span != null) {
@@ -653,11 +764,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/tables")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.listTables",
             "TableService",
             "ListTables",
+            gcpResourceDestinationId,
             options),
         span -> {
           if (span != null) {
@@ -716,11 +837,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/tables/")
+            .append(tableId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.deleteTable",
             "TableService",
             "DeleteTable",
+            gcpResourceDestinationId,
             null),
         span -> {
           bqDeleteRequest.execute();
@@ -755,11 +887,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(reference.getProjectId())
+            .append("/datasets/")
+            .append(reference.getDatasetId())
+            .append("/models/")
+            .append(reference.getModelId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.patchModel",
             "ModelService",
             "PatchModel",
+            gcpResourceDestinationId,
             options),
         span -> {
           Model modelResponse = bqPatchRequest.execute();
@@ -801,9 +944,23 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/models/")
+            .append(modelId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.getModel", "ModelService", "GetModel", options),
+            "com.google.cloud.bigquery.BigQueryRpc.getModel",
+            "ModelService",
+            "GetModel",
+            gcpResourceDestinationId,
+            options),
         span -> {
           Model modelResponse = bqGetRequest.execute();
           if (span != null) {
@@ -840,11 +997,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/models")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.listModels",
             "ModelService",
             "ListModels",
+            gcpResourceDestinationId,
             options),
         span -> {
           if (span != null) {
@@ -887,11 +1054,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/models/")
+            .append(modelId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.deleteModel",
             "ModelService",
             "DeleteModel",
+            gcpResourceDestinationId,
             null),
         span -> {
           bqDeleteRequest.execute();
@@ -928,11 +1106,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(reference.getProjectId())
+            .append("/datasets/")
+            .append(reference.getDatasetId())
+            .append("/routines/")
+            .append(reference.getRoutineId())
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.updateRoutine",
             "RoutineService",
             "UpdateRoutine",
+            gcpResourceDestinationId,
             options),
         span -> {
           Routine routineResponse = bqUpdateRequest.execute();
@@ -974,11 +1163,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/routines/")
+            .append(routineId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.getRoutine",
             "RoutineService",
             "GetRoutine",
+            gcpResourceDestinationId,
             options),
         span -> {
           Routine routineResponse = bqGetRequest.execute();
@@ -1016,11 +1216,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/routines")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.listRoutines",
             "RoutineService",
             "ListRoutines",
+            gcpResourceDestinationId,
             options),
         span -> {
           if (span != null) {
@@ -1062,11 +1272,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/routines/")
+            .append(routineId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.deleteRoutine",
             "RoutineService",
             "DeleteRoutine",
+            gcpResourceDestinationId,
             null),
         span -> {
           bqDeleteRequest.execute();
@@ -1099,11 +1320,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/tables/")
+            .append(tableId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.insertAll",
             "TableDataService",
             "InsertAll",
+            gcpResourceDestinationId,
             null),
         span -> insertAllRequest.execute());
   }
@@ -1139,11 +1371,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/tables/")
+            .append(tableId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.listTableData",
             "TableDataService",
             "List",
+            gcpResourceDestinationId,
             options),
         span -> {
           if (span != null) {
@@ -1189,11 +1432,22 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/datasets/")
+            .append(datasetId)
+            .append("/tables/")
+            .append(tableId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.listTableDataWithRowLimit",
             "TableDataService",
             "List",
+            gcpResourceDestinationId,
             null),
         span -> {
           if (span != null) {
@@ -1232,9 +1486,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs/")
+            .append(jobId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.getJob", "JobService", "GetJob", options),
+            "com.google.cloud.bigquery.BigQueryRpc.getJob",
+            "JobService",
+            "GetJob",
+            gcpResourceDestinationId,
+            options),
         span -> {
           Job jobResponse = bqGetRequest.execute();
           if (span != null) {
@@ -1270,9 +1536,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs/")
+            .append(jobId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.getQueryJob", "JobService", "GetJob", null),
+            "com.google.cloud.bigquery.BigQueryRpc.getQueryJob",
+            "JobService",
+            "GetJob",
+            gcpResourceDestinationId,
+            null),
         span -> {
           Job jobResponse = bqGetRequest.execute();
           if (span != null) {
@@ -1321,9 +1599,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.listJobs", "JobService", "ListJobs", options),
+            "com.google.cloud.bigquery.BigQueryRpc.listJobs",
+            "JobService",
+            "ListJobs",
+            gcpResourceDestinationId,
+            options),
         span -> {
           if (span != null) {
             span.setAttribute("bq.rpc.page_token", listJobsRequest.getPageToken());
@@ -1386,9 +1675,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs/")
+            .append(jobId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.cancelJob", "JobService", "CancelJob", null),
+            "com.google.cloud.bigquery.BigQueryRpc.cancelJob",
+            "JobService",
+            "CancelJob",
+            gcpResourceDestinationId,
+            null),
         span -> {
           bqCancelRequest.execute();
           return true;
@@ -1415,9 +1716,21 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs/")
+            .append(jobName)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.deleteJob", "JobService", "DeleteJob", null),
+            "com.google.cloud.bigquery.BigQueryRpc.deleteJob",
+            "JobService",
+            "DeleteJob",
+            gcpResourceDestinationId,
+            null),
         span -> {
           bqDeleteRequest.execute();
           return true;
@@ -1456,11 +1769,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs/")
+            .append(jobId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.getQueryResults",
             "JobService",
             "GetQueryResults",
+            gcpResourceDestinationId,
             options),
         span -> {
           if (span != null) {
@@ -1499,11 +1821,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs/")
+            .append(jobId)
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.getQueryResultsWithRowLimit",
             "JobService",
             "GetQueryResults",
+            gcpResourceDestinationId,
             null),
         span -> {
           if (span != null) {
@@ -1531,9 +1862,20 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder()
+            .append(RESOURCE_PROJECT_PREFIX)
+            .append(projectId)
+            .append("/jobs")
+            .toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
-            "com.google.cloud.bigquery.BigQueryRpc.queryRpc", "JobService", "Query", null),
+            "com.google.cloud.bigquery.BigQueryRpc.queryRpc",
+            "JobService",
+            "Query",
+            gcpResourceDestinationId,
+            null),
         span -> {
           return queryRequest.execute();
         });
@@ -1655,11 +1997,15 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder().append("//bigquery.googleapis.com/").append(resourceId).toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.getIamPolicy",
             "TableService",
             "GetIamPolicy",
+            gcpResourceDestinationId,
             options),
         span -> {
           return bqGetRequest.execute();
@@ -1687,11 +2033,15 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder().append("//bigquery.googleapis.com/").append(resourceId).toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.setIamPolicy",
             "TableService",
             "SetIamPolicy",
+            gcpResourceDestinationId,
             options),
         span -> {
           return bqSetRequest.execute();
@@ -1720,11 +2070,15 @@ public class HttpBigQueryRpc implements BigQueryRpc {
         .getRequestHeaders()
         .set("x-goog-otel-enabled", this.options.isOpenTelemetryTracingEnabled());
 
+    String gcpResourceDestinationId =
+        new StringBuilder().append("//bigquery.googleapis.com/").append(resourceId).toString();
+
     return executeWithSpan(
         createRpcTracingSpan(
             "com.google.cloud.bigquery.BigQueryRpc.testIamPermissions",
             "TableService",
             "TestIamPermissions",
+            gcpResourceDestinationId,
             options),
         span -> {
           return bqTestRequest.execute();
@@ -1737,7 +2091,11 @@ public class HttpBigQueryRpc implements BigQueryRpc {
    * <p>If isOpenTelemetryTracingEnabled == true creates and returns span, otherwise returns null.
    */
   private Span createRpcTracingSpan(
-      String spanName, String service, String method, Map<Option, ?> options) {
+      String spanName,
+      String service,
+      String method,
+      String gcpResourceDestinationId,
+      Map<Option, ?> options) {
     if (!this.options.isOpenTelemetryTracingEnabled()
         || this.options.getOpenTelemetryTracer() == null) {
       return null;
@@ -1750,7 +2108,9 @@ public class HttpBigQueryRpc implements BigQueryRpc {
             .setSpanKind(SpanKind.CLIENT)
             .setAttribute("bq.rpc.service", service)
             .setAttribute("bq.rpc.method", method)
-            .setAttribute("bq.rpc.system", "http");
+            .setAttribute("bq.rpc.system", "http")
+            .setAttribute(
+                BigQueryTelemetryTracer.GCP_RESOURCE_DESTINATION_ID, gcpResourceDestinationId);
 
     if (options != null) {
       builder.setAllAttributes(otelAttributesFromOptions(options));

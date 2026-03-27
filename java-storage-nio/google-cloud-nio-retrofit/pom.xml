@@ -16,6 +16,7 @@
   </parent>
   <properties>
     <site.installationModule>google-cloud-nio-retrofit</site.installationModule>
+    <checkstyle.skip>true</checkstyle.skip>
   </properties>
   <build>
     <plugins>

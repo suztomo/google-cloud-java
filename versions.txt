@@ -1021,3 +1021,4 @@ google-auth-library-parent:1.43.0:1.43.1-SNAPSHOT
 google-auth-library-appengine:1.43.0:1.43.1-SNAPSHOT
 google-auth-library-credentials:1.43.0:1.43.1-SNAPSHOT
 google-auth-library-oauth2-http:1.43.0:1.43.1-SNAPSHOT
+google-cloud-nio:0.128.14:0.128.14

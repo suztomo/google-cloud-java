@@ -37,11 +37,19 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ErrorDetails;
+import com.google.api.gax.rpc.StatusCode;
+import com.google.common.collect.ImmutableList;
+import com.google.protobuf.Any;
+import com.google.rpc.ErrorInfo;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.SpanBuilder;
 import io.opentelemetry.api.trace.SpanKind;
 import io.opentelemetry.api.trace.Tracer;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -376,6 +384,209 @@ class SpanTracerTest {
   }
 
   @Test
+  void testAttemptFailed_errorInfoReason() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    ErrorInfo errorInfo = ErrorInfo.newBuilder().setReason("RATE_LIMIT_EXCEEDED").build();
+    ErrorDetails errorDetails =
+        ErrorDetails.builder().setRawErrorMessages(ImmutableList.of(Any.pack(errorInfo))).build();
+    Throwable cause = new Throwable("message");
+
+    ApiException apiException =
+        new ApiException(
+            cause,
+            new StatusCode() {
+              @Override
+              public Code getCode() {
+                return Code.UNAVAILABLE;
+              }
+
+              @Override
+              public Object getTransportCode() {
+                return null;
+              }
+            },
+            true,
+            errorDetails);
+
+    spanTracer.attemptFailedRetriesExhausted(apiException);
+
+    verify(span).setAttribute(ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, "RATE_LIMIT_EXCEEDED");
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_specificServerErrorCodeGrpc() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    ApiException apiException =
+        new ApiException(
+            "message",
+            null,
+            new StatusCode() {
+              @Override
+              public Code getCode() {
+                return Code.PERMISSION_DENIED;
+              }
+
+              @Override
+              public Object getTransportCode() {
+                return "PERMISSION_DENIED";
+              }
+            },
+            true);
+
+    spanTracer.attemptFailedRetriesExhausted(apiException);
+
+    verify(span).setAttribute(ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, "PERMISSION_DENIED");
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_specificServerErrorCodeHttp() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    ApiException apiException =
+        new ApiException(
+            "message",
+            null,
+            new StatusCode() {
+              @Override
+              public Code getCode() {
+                return Code.PERMISSION_DENIED;
+              }
+
+              @Override
+              public Object getTransportCode() {
+                return 403;
+              }
+            },
+            true);
+
+    spanTracer.attemptFailedRetriesExhausted(apiException);
+
+    verify(span).setAttribute(ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, "403");
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_clientTimeout() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new SocketTimeoutException());
+
+    verify(span)
+        .setAttribute(
+            ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE,
+            ErrorTypeUtil.ErrorType.CLIENT_TIMEOUT.toString());
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_clientConnectionError() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new ConnectException("connection failed"));
+
+    verify(span)
+        .setAttribute(
+            ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE,
+            ErrorTypeUtil.ErrorType.CLIENT_CONNECTION_ERROR.toString());
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_clientRedirectError() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new RedirectException("redirect failed"));
+
+    verify(span).setAttribute(ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, "RedirectException");
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_clientRequestError() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new IllegalArgumentException());
+
+    verify(span)
+        .setAttribute(
+            ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE,
+            ErrorTypeUtil.ErrorType.CLIENT_REQUEST_ERROR.toString());
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_clientUnknownError() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new UnknownClientException());
+
+    verify(span)
+        .setAttribute(ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, "UnknownClientException");
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_languageSpecificFallback() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new IllegalStateException("illegal state"));
+
+    verify(span)
+        .setAttribute(ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, "IllegalStateException");
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_internalFallback() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new Throwable() {});
+
+    // For an anonymous inner class Throwable, getSimpleName() is empty string,
+    // which triggers the
+    // fallback
+    verify(span)
+        .setAttribute(
+            ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE,
+            ErrorTypeUtil.ErrorType.INTERNAL.toString());
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_internalFallback_nullError() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(null);
+
+    // For an anonymous inner class Throwable, getSimpleName() is empty string,
+    // which triggers the
+    // fallback
+    verify(span)
+        .setAttribute(
+            ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE,
+            ErrorTypeUtil.ErrorType.INTERNAL.toString());
+    verify(span).end();
+  }
+
+  @Test
+  void testAttemptFailed_populatesExceptionTypeAndMessage() {
+    spanTracer.attemptStarted(new Object(), 1);
+
+    spanTracer.attemptFailedRetriesExhausted(new IllegalStateException("custom error message"));
+
+    verify(span)
+        .setAttribute(
+            ObservabilityAttributes.EXCEPTION_TYPE_ATTRIBUTE, "java.lang.IllegalStateException");
+    verify(span)
+        .setAttribute(ObservabilityAttributes.STATUS_MESSAGE_ATTRIBUTE, "custom error message");
+    verify(span).end();
+  }
+
+  @Test
   void testRequestUrlResolved_setsAttribute() {
     spanTracer.attemptStarted(new Object(), 1);
 
@@ -398,4 +609,12 @@ class SpanTracerTest {
     verify(span, never())
         .setAttribute(eq(ObservabilityAttributes.HTTP_URL_FULL_ATTRIBUTE), anyString());
   }
+
+  private static class RedirectException extends RuntimeException {
+    public RedirectException(String message) {
+      super(message);
+    }
+  }
+
+  private static class UnknownClientException extends RuntimeException {}
 }

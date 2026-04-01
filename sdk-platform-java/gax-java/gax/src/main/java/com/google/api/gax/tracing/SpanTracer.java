@@ -30,6 +30,7 @@
 
 package com.google.api.gax.tracing;
 
+import com.google.api.client.util.Strings;
 import com.google.api.core.BetaApi;
 import com.google.api.core.InternalApi;
 import io.opentelemetry.api.trace.Span;
@@ -134,7 +135,7 @@ public class SpanTracer implements ApiTracer {
 
   @Override
   public void attemptSucceeded() {
-    endAttempt(null);
+    recordErrorAndEndAttempt(null);
   }
 
   @Override
@@ -181,37 +182,62 @@ public class SpanTracer implements ApiTracer {
 
   @Override
   public void attemptCancelled() {
-    endAttempt(new CancellationException());
+    recordErrorAndEndAttempt(new CancellationException());
   }
 
   @Override
   public void attemptFailedDuration(Throwable error, java.time.Duration delay) {
-    endAttempt(error);
+    recordErrorAndEndAttempt(error);
   }
 
   @Override
   public void attemptFailedRetriesExhausted(Throwable error) {
-    endAttempt(error);
+    recordErrorAndEndAttempt(error);
   }
 
   @Override
   public void attemptPermanentFailure(Throwable error) {
-    endAttempt(error);
+    recordErrorAndEndAttempt(error);
   }
 
-  private void endAttempt(Throwable error) {
-    if (attemptSpan != null) {
-      Map<String, Object> endAttributes = new HashMap<>();
-      ObservabilityUtils.populateStatusAttributes(
-          endAttributes, error, this.apiTracerContext.transport());
-
-      if (!endAttributes.isEmpty()) {
-        attemptSpan.setAllAttributes(ObservabilityUtils.toOtelAttributes(endAttributes));
-      }
-
-      attemptSpan.end();
-      attemptSpan = null;
+  private void recordErrorAndEndAttempt(Throwable error) {
+    if (attemptSpan == null) {
+      return;
     }
+
+    attemptSpan.setAttribute(
+        ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, ObservabilityUtils.extractErrorType(error));
+
+    Map<String, Object> statusAttributes = new HashMap<>();
+    ObservabilityUtils.populateStatusAttributes(
+        statusAttributes, error, this.apiTracerContext.transport());
+    if (!statusAttributes.isEmpty()) {
+      attemptSpan.setAllAttributes(ObservabilityUtils.toOtelAttributes(statusAttributes));
+    }
+
+    if (error == null) {
+      endAttempt();
+      return;
+    }
+
+    attemptSpan.setAttribute(
+        ObservabilityAttributes.EXCEPTION_TYPE_ATTRIBUTE, error.getClass().getName());
+
+    if (!Strings.isNullOrEmpty(error.getMessage())) {
+      attemptSpan.setAttribute(
+          ObservabilityAttributes.STATUS_MESSAGE_ATTRIBUTE, error.getMessage());
+    }
+
+    endAttempt();
+  }
+
+  private void endAttempt() {
+    if (attemptSpan == null) {
+      return;
+    }
+
+    attemptSpan.end();
+    attemptSpan = null;
   }
 
   @Override

@@ -33,6 +33,7 @@ excluded_modules=(
   'java-spanner-jdbc'
   'google-auth-library-java'
   'java-storage'
+  'java-storage-nio'
 )
 
 function retry_with_backoff {

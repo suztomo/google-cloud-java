@@ -981,9 +981,11 @@ public class SpannerOptions extends ServiceOptions<Spanner, SpannerOptions> {
     } else {
       enableBuiltInMetrics = builder.enableBuiltInMetrics;
     }
-    if (builder.experimentalHost != null
-        && System.getenv(EXPERIMENTAL_LOCATION_API_ENV_VAR) == null) {
-      enableLocationApi = true;
+    // Enable location API when experimental host is set, unless explicitly disabled
+    // via GOOGLE_SPANNER_EXPERIMENTAL_LOCATION_API=false.
+    if (builder.experimentalHost != null) {
+      String locationApiEnvValue = System.getenv(EXPERIMENTAL_LOCATION_API_ENV_VAR);
+      enableLocationApi = locationApiEnvValue == null || Boolean.parseBoolean(locationApiEnvValue);
     } else {
       enableLocationApi = builder.enableLocationApi;
     }

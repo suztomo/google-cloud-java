@@ -639,6 +639,9 @@ public final class KeyRangeCache {
         }
       }
       for (int index = 0; index < tablets.size(); index++) {
+        if (checkedLeader && index == leaderIndex) {
+          continue;
+        }
         CachedTablet tablet = tablets.get(index);
         if (!tablet.matches(directedReadOptions)) {
           continue;

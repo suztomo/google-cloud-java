@@ -251,6 +251,7 @@ public class MultiplexedSessionDatabaseClientTest {
   @Test
   @SuppressWarnings("unchecked")
   public void testGrpcGcpSingleUseDoesNotReserveBitsetChannelHint() throws Exception {
+    assumeTrue(isJava8());
     SessionClient sessionClient = mock(SessionClient.class);
     SpannerImpl spanner = mock(SpannerImpl.class);
     SpannerOptions spannerOptions = mock(SpannerOptions.class);

@@ -205,8 +205,7 @@ abstract class AbstractReadContext
       // with a multiplexed session to perform a round-robin channel selection. We are
       // passing a hint here to prefer random channel selection instead of doing GAX round-robin.
       // Also signal unbind so the grpc-gcp affinity map entry is cleaned up once the call
-      // completes. The retry path (prepareRetryOnDifferentGrpcChannel) does NOT carry this
-      // flag, so resumed streams will re-bind to a fresh key without early unbind.
+      // completes. The unbind flag is preserved on retries via prepareRetryOnDifferentGrpcChannel.
       this.channelHint =
           getChannelHintOptions(
               session.getOptions(),

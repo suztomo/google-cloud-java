@@ -159,12 +159,10 @@ final class KeyAwareChannel extends ManagedChannel {
   }
 
   /** Records real traffic to the selected endpoint for idle eviction tracking. */
-  private void onRequestRouted(
-      @Nullable String session, @Nullable ChannelEndpoint selectedEndpoint) {
+  private void onRequestRouted(@Nullable ChannelEndpoint selectedEndpoint) {
     if (lifecycleManager == null) {
       return;
     }
-    // Record real traffic for idle eviction tracking.
     if (selectedEndpoint != null && !defaultEndpointAddress.equals(selectedEndpoint.getAddress())) {
       lifecycleManager.recordRealTraffic(selectedEndpoint.getAddress());
     }
@@ -545,8 +543,7 @@ final class KeyAwareChannel extends ManagedChannel {
         this.channelFinder = finder;
 
         // Record real traffic for idle eviction tracking.
-        String session = extractSessionFromMessage(message);
-        parentChannel.onRequestRouted(session, endpoint);
+        parentChannel.onRequestRouted(endpoint);
 
         recordRouteSelectionTrace(
             methodDescriptor,
@@ -675,22 +672,6 @@ final class KeyAwareChannel extends ManagedChannel {
         currentDelegate.request(batch);
         requests -= batch;
       }
-    }
-
-    @Nullable
-    private static String extractSessionFromMessage(Object message) {
-      if (message instanceof ReadRequest) {
-        return ((ReadRequest) message).getSession();
-      } else if (message instanceof ExecuteSqlRequest) {
-        return ((ExecuteSqlRequest) message).getSession();
-      } else if (message instanceof BeginTransactionRequest) {
-        return ((BeginTransactionRequest) message).getSession();
-      } else if (message instanceof CommitRequest) {
-        return ((CommitRequest) message).getSession();
-      } else if (message instanceof RollbackRequest) {
-        return ((RollbackRequest) message).getSession();
-      }
-      return null;
     }
 
     void maybeRecordAffinity(ByteString transactionId) {

@@ -75,25 +75,23 @@ class GoldenSignalsMetricsTracer implements ApiTracer {
    */
   @Override
   public void operationSucceeded() {
-    ObservabilityUtils.populateStatusAttributes(attributes, null, transport);
-    metricsRecorder.recordOperationLatency(
-        clientRequestTimer.elapsed(TimeUnit.NANOSECONDS) / 1_000_000_000.0, attributes);
+    recordMetric(null);
   }
 
   @Override
   public void operationCancelled() {
-    recordError(new CancellationException());
+    recordMetric(new CancellationException());
   }
 
   @Override
   public void operationFailed(Throwable error) {
-    recordError(error);
+    recordMetric(error);
   }
 
-  private void recordError(Throwable error) {
-    ObservabilityUtils.populateStatusAttributes(attributes, error, transport);
-    attributes.put(
-        ObservabilityAttributes.ERROR_TYPE_ATTRIBUTE, ObservabilityUtils.extractErrorType(error));
+  private void recordMetric(Throwable error) {
+    Map<String, Object> responseAttributes =
+        ObservabilityUtils.getResponseAttributes(error, transport);
+    attributes.putAll(responseAttributes);
     metricsRecorder.recordOperationLatency(
         clientRequestTimer.elapsed(TimeUnit.NANOSECONDS) / 1_000_000_000.0, attributes);
   }

@@ -34,6 +34,7 @@ excluded_modules=(
   'google-auth-library-java'
   'java-storage'
   'java-storage-nio'
+  'java-firestore'
 )
 
 function retry_with_backoff {

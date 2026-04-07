@@ -37,11 +37,13 @@ import java.util.Objects;
 import java.util.TreeMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 /** Cache for routing information used by location-aware routing. */
 @InternalApi
 public final class KeyRangeCache {
+  private static final Predicate<String> NO_EXCLUDED_ENDPOINTS = address -> false;
 
   private static final int MAX_LOCAL_REPLICA_DISTANCE = 5;
   private static final int DEFAULT_MIN_ENTRIES_FOR_RANDOM_PICK = 1000;
@@ -102,6 +104,16 @@ public final class KeyRangeCache {
       RangeMode rangeMode,
       DirectedReadOptions directedReadOptions,
       RoutingHint.Builder hintBuilder) {
+    return fillRoutingHint(
+        preferLeader, rangeMode, directedReadOptions, hintBuilder, NO_EXCLUDED_ENDPOINTS);
+  }
+
+  public ChannelEndpoint fillRoutingHint(
+      boolean preferLeader,
+      RangeMode rangeMode,
+      DirectedReadOptions directedReadOptions,
+      RoutingHint.Builder hintBuilder,
+      Predicate<String> excludedEndpoints) {
     ByteString key = hintBuilder.getKey();
     if (key.isEmpty()) {
       return null;
@@ -121,7 +133,8 @@ public final class KeyRangeCache {
     hintBuilder.setKey(targetRange.startKey);
     hintBuilder.setLimitKey(targetRange.limitKey);
 
-    return targetRange.group.fillRoutingHint(preferLeader, directedReadOptions, hintBuilder);
+    return targetRange.group.fillRoutingHint(
+        preferLeader, directedReadOptions, hintBuilder, excludedEndpoints);
   }
 
   public void clear() {
@@ -469,8 +482,11 @@ public final class KeyRangeCache {
       }
     }
 
-    boolean shouldSkip(RoutingHint.Builder hintBuilder) {
-      if (skip || serverAddress.isEmpty() || (endpoint != null && !endpoint.isHealthy())) {
+    boolean shouldSkip(RoutingHint.Builder hintBuilder, Predicate<String> excludedEndpoints) {
+      if (skip
+          || serverAddress.isEmpty()
+          || excludedEndpoints.test(serverAddress)
+          || (endpoint != null && !endpoint.isHealthy())) {
         RoutingHint.SkippedTablet.Builder skipped = hintBuilder.addSkippedTabletUidBuilder();
         skipped.setTabletUid(tabletUid);
         skipped.setIncarnation(incarnation);
@@ -562,7 +578,8 @@ public final class KeyRangeCache {
     ChannelEndpoint fillRoutingHint(
         boolean preferLeader,
         DirectedReadOptions directedReadOptions,
-        RoutingHint.Builder hintBuilder) {
+        RoutingHint.Builder hintBuilder,
+        Predicate<String> excludedEndpoints) {
       boolean hasDirectedReadOptions =
           directedReadOptions.getReplicasCase()
               != DirectedReadOptions.ReplicasCase.REPLICAS_NOT_SET;
@@ -575,7 +592,11 @@ public final class KeyRangeCache {
       synchronized (this) {
         selected =
             selectTabletLocked(
-                preferLeader, hasDirectedReadOptions, hintBuilder, directedReadOptions);
+                preferLeader,
+                hasDirectedReadOptions,
+                hintBuilder,
+                directedReadOptions,
+                excludedEndpoints);
         if (selected == null) {
           return null;
         }
@@ -605,19 +626,27 @@ public final class KeyRangeCache {
         boolean preferLeader,
         boolean hasDirectedReadOptions,
         RoutingHint.Builder hintBuilder,
-        DirectedReadOptions directedReadOptions) {
+        DirectedReadOptions directedReadOptions,
+        Predicate<String> excludedEndpoints) {
+      boolean checkedLeader = false;
       if (preferLeader
           && !hasDirectedReadOptions
           && hasLeader()
-          && leader().distance <= MAX_LOCAL_REPLICA_DISTANCE
-          && !leader().shouldSkip(hintBuilder)) {
-        return leader();
+          && leader().distance <= MAX_LOCAL_REPLICA_DISTANCE) {
+        checkedLeader = true;
+        if (!leader().shouldSkip(hintBuilder, excludedEndpoints)) {
+          return leader();
+        }
       }
-      for (CachedTablet tablet : tablets) {
+      for (int index = 0; index < tablets.size(); index++) {
+        if (checkedLeader && index == leaderIndex) {
+          continue;
+        }
+        CachedTablet tablet = tablets.get(index);
         if (!tablet.matches(directedReadOptions)) {
           continue;
         }
-        if (tablet.shouldSkip(hintBuilder)) {
+        if (tablet.shouldSkip(hintBuilder, excludedEndpoints)) {
           continue;
         }
         return tablet;

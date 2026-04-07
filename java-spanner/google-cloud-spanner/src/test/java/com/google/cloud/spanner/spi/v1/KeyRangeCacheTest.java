@@ -114,6 +114,10 @@ public class KeyRangeCacheTest {
                             .setDistance(0)))
             .build());
 
+    // Pre-create endpoints so getIfPresent() returns them.
+    endpointCache.get("server1");
+    endpointCache.get("server2");
+
     RoutingHint.Builder hint = RoutingHint.newBuilder().setKey(bytes("a"));
     ChannelEndpoint server =
         cache.fillRoutingHint(

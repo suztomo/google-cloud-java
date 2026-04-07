@@ -44,6 +44,7 @@ import io.grpc.MethodDescriptor;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.trace.Span;
 import java.io.IOException;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.util.HashSet;
 import java.util.Map;
@@ -85,8 +86,8 @@ final class KeyAwareChannel extends ManagedChannel {
   @Nullable private final EndpointLifecycleManager lifecycleManager;
   private final String authority;
   private final String defaultEndpointAddress;
-  private final Map<String, SoftReference<ChannelFinder>> channelFinders =
-      new ConcurrentHashMap<>();
+  private final ReferenceQueue<ChannelFinder> channelFinderReferenceQueue = new ReferenceQueue<>();
+  private final Map<String, ChannelFinderReference> channelFinders = new ConcurrentHashMap<>();
   private final Map<ByteString, String> transactionAffinities = new ConcurrentHashMap<>();
   // Maps read-only transaction IDs to their preferLeader value.
   // Strong reads → true (prefer leader), Stale reads → false (any replica).
@@ -128,6 +129,18 @@ final class KeyAwareChannel extends ManagedChannel {
     return new KeyAwareChannel(channelProvider, endpointCacheFactory);
   }
 
+  private static final class ChannelFinderReference extends SoftReference<ChannelFinder> {
+    final String databaseId;
+
+    ChannelFinderReference(
+        String databaseId,
+        ChannelFinder referent,
+        ReferenceQueue<? super ChannelFinder> referenceQueue) {
+      super(referent, referenceQueue);
+      this.databaseId = databaseId;
+    }
+  }
+
   private String extractDatabaseIdFromSession(String session) {
     if (session == null || session.isEmpty()) {
       return null;
@@ -139,19 +152,32 @@ final class KeyAwareChannel extends ManagedChannel {
     return session.substring(0, sessionsIndex);
   }
 
+  private void cleanupStaleChannelFinders() {
+    ChannelFinderReference reference;
+    while ((reference = (ChannelFinderReference) channelFinderReferenceQueue.poll()) != null) {
+      if (channelFinders.remove(reference.databaseId, reference) && lifecycleManager != null) {
+        lifecycleManager.unregisterFinder(reference.databaseId);
+      }
+    }
+  }
+
   private ChannelFinder getOrCreateChannelFinder(String databaseId) {
-    SoftReference<ChannelFinder> ref = channelFinders.get(databaseId);
+    cleanupStaleChannelFinders();
+    ChannelFinderReference ref = channelFinders.get(databaseId);
     ChannelFinder finder = (ref != null) ? ref.get() : null;
     if (finder == null) {
       synchronized (channelFinders) {
+        cleanupStaleChannelFinders();
         ref = channelFinders.get(databaseId);
         finder = (ref != null) ? ref.get() : null;
         if (finder == null) {
           finder =
               lifecycleManager != null
-                  ? new ChannelFinder(endpointCache, lifecycleManager)
+                  ? new ChannelFinder(endpointCache, lifecycleManager, databaseId)
                   : new ChannelFinder(endpointCache);
-          channelFinders.put(databaseId, new SoftReference<>(finder));
+          channelFinders.put(
+              databaseId,
+              new ChannelFinderReference(databaseId, finder, channelFinderReferenceQueue));
         }
       }
     }
@@ -170,6 +196,7 @@ final class KeyAwareChannel extends ManagedChannel {
 
   @Override
   public ManagedChannel shutdown() {
+    cleanupStaleChannelFinders();
     if (lifecycleManager != null) {
       lifecycleManager.shutdown();
     }
@@ -179,6 +206,7 @@ final class KeyAwareChannel extends ManagedChannel {
 
   @Override
   public ManagedChannel shutdownNow() {
+    cleanupStaleChannelFinders();
     if (lifecycleManager != null) {
       lifecycleManager.shutdown();
     }

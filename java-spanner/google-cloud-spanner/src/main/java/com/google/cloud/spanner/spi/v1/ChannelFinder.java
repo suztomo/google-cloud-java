@@ -53,15 +53,24 @@ public final class ChannelFinder {
   private final KeyRecipeCache recipeCache = new KeyRecipeCache();
   private final KeyRangeCache rangeCache;
   @Nullable private final EndpointLifecycleManager lifecycleManager;
+  @Nullable private final String finderKey;
 
   public ChannelFinder(ChannelEndpointCache endpointCache) {
-    this(endpointCache, null);
+    this(endpointCache, null, null);
   }
 
   public ChannelFinder(
       ChannelEndpointCache endpointCache, @Nullable EndpointLifecycleManager lifecycleManager) {
+    this(endpointCache, lifecycleManager, null);
+  }
+
+  ChannelFinder(
+      ChannelEndpointCache endpointCache,
+      @Nullable EndpointLifecycleManager lifecycleManager,
+      @Nullable String finderKey) {
     this.rangeCache = new KeyRangeCache(Objects.requireNonNull(endpointCache), lifecycleManager);
     this.lifecycleManager = lifecycleManager;
+    this.finderKey = finderKey;
   }
 
   void useDeterministicRandom() {
@@ -84,22 +93,21 @@ public final class ChannelFinder {
       rangeCache.addRanges(update);
 
       // Notify the lifecycle manager about server addresses so it can create endpoints
-      // in the background and start probing.
-      if (lifecycleManager != null) {
+      // in the background and start probing, and evict stale endpoints atomically.
+      if (lifecycleManager != null && finderKey != null) {
         Set<String> currentAddresses = new HashSet<>();
         for (Group group : update.getGroupList()) {
           for (Tablet tablet : group.getTabletsList()) {
             String addr = tablet.getServerAddress();
             if (!addr.isEmpty()) {
               currentAddresses.add(addr);
-              lifecycleManager.ensureEndpointExists(addr);
             }
           }
         }
         // Also include addresses from existing cached tablets not in this update.
         currentAddresses.addAll(rangeCache.getActiveAddresses());
-        // Evict endpoints no longer referenced by any tablet across all finders.
-        lifecycleManager.updateActiveAddresses(this, currentAddresses);
+        // Atomically ensure endpoints exist and evict stale ones.
+        lifecycleManager.updateActiveAddresses(finderKey, currentAddresses);
       }
     }
   }

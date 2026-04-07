@@ -79,8 +79,10 @@ class EndpointLifecycleManager {
     volatile Instant lastProbeAt;
     volatile Instant lastRealTrafficAt;
     volatile Instant lastReadyAt;
-    volatile ScheduledFuture<?> probeFuture;
     volatile int consecutiveTransientFailures;
+
+    // Guarded by synchronizing on this EndpointState instance.
+    ScheduledFuture<?> probeFuture;
 
     EndpointState(String address, Instant now) {
       this.address = address;
@@ -94,8 +96,19 @@ class EndpointLifecycleManager {
   private final ChannelEndpointCache endpointCache;
   private final Map<String, EndpointState> endpoints = new ConcurrentHashMap<>();
 
-  /** Active addresses reported by each ChannelFinder (keyed by finder identity). */
-  private final Map<Object, Set<String>> activeAddressesPerFinder = new ConcurrentHashMap<>();
+  /**
+   * Active addresses reported by each ChannelFinder, keyed by database id.
+   *
+   * <p>ChannelFinder instances are held via SoftReference in KeyAwareChannel, so this map uses a
+   * stable database-id key instead of a strong ChannelFinder reference. KeyAwareChannel unregisters
+   * stale entries when a finder is cleared.
+   *
+   * <p>All reads and writes to this map, and stale-endpoint eviction based on it, are synchronized
+   * on {@link #activeAddressLock}.
+   */
+  private final Map<String, Set<String>> activeAddressesPerFinder = new ConcurrentHashMap<>();
+
+  private final Object activeAddressLock = new Object();
 
   private final ScheduledExecutorService scheduler;
   private final AtomicBoolean isShutdown = new AtomicBoolean(false);
@@ -127,7 +140,7 @@ class EndpointLifecycleManager {
     this.defaultEndpointAddress = endpointCache.defaultChannel().getAddress();
     this.scheduler =
         Executors.newScheduledThreadPool(
-            1,
+            2,
             r -> {
               Thread t = new Thread(r, "spanner-endpoint-lifecycle");
               t.setDaemon(true);
@@ -144,28 +157,34 @@ class EndpointLifecycleManager {
   }
 
   /**
-   * Ensures an endpoint exists for the given address. If the endpoint does not exist, creates it in
-   * the background and starts probing. If it already exists, this is a no-op.
+   * Ensures an endpoint state exists for the given address.
    *
-   * <p>This is called from the cache update path when new server addresses appear.
+   * <p>This is only called from {@link #updateActiveAddresses} under {@link #activeAddressLock} to
+   * guarantee that newly created endpoints are registered as active before any stale-eviction check
+   * can see them. Background creation tasks are scheduled by the caller after {@code
+   * computeIfAbsent} returns, so the entry is visible in the map before the scheduler thread checks
+   * it.
+   *
+   * @return true if a new endpoint state was created (caller should schedule background creation)
    */
-  void ensureEndpointExists(String address) {
+  private boolean ensureEndpointExists(String address) {
     if (isShutdown.get() || address == null || address.isEmpty()) {
-      return;
+      return false;
     }
     // Don't manage the default endpoint.
     if (defaultEndpointAddress.equals(address)) {
-      return;
+      return false;
     }
 
+    boolean[] created = {false};
     endpoints.computeIfAbsent(
         address,
         addr -> {
-          logger.log(Level.FINE, "Scheduling background endpoint creation for address: {0}", addr);
-          EndpointState state = new EndpointState(addr, clock.instant());
-          scheduler.submit(() -> createAndStartProbing(addr));
-          return state;
+          logger.log(Level.FINE, "Creating endpoint state for address: {0}", addr);
+          created[0] = true;
+          return new EndpointState(addr, clock.instant());
         });
+    return created[0];
   }
 
   /**
@@ -183,55 +202,124 @@ class EndpointLifecycleManager {
   }
 
   /**
-   * Updates the set of active addresses for a given finder and evicts any managed endpoints that
-   * are no longer referenced by any finder. This handles the case where a tablet's server address
-   * changes (e.g. from server1:15000 to server2:15000) — the old endpoint is shut down promptly
-   * instead of lingering until idle eviction.
+   * Atomically ensures endpoints exist for all active addresses and evicts any managed endpoints
+   * that are no longer referenced by any finder. This handles the case where a tablet's server
+   * address changes (e.g. from server1:15000 to server2:15000) — the old endpoint is shut down
+   * promptly instead of lingering until idle eviction.
    *
-   * @param finderKey identity of the ChannelFinder reporting its active addresses
+   * <p>Both endpoint creation and stale-eviction are performed under the same lock to prevent a
+   * race condition where a newly created endpoint could be evicted by a concurrent call from
+   * another finder before it is registered as active.
+   *
+   * @param finderKey stable identifier of the ChannelFinder reporting its active addresses
    * @param activeAddresses server addresses currently referenced by tablets in this finder
    */
-  void updateActiveAddresses(Object finderKey, Set<String> activeAddresses) {
-    if (isShutdown.get()) {
+  void updateActiveAddresses(String finderKey, Set<String> activeAddresses) {
+    if (isShutdown.get() || finderKey == null || finderKey.isEmpty()) {
       return;
     }
-    activeAddressesPerFinder.put(finderKey, activeAddresses);
+    List<String> newlyCreated = new ArrayList<>();
+    synchronized (activeAddressLock) {
+      // Ensure endpoints exist for all active addresses while holding the lock.
+      // This guarantees the addresses are in the endpoints map before we compute stale entries.
+      for (String address : activeAddresses) {
+        if (ensureEndpointExists(address)) {
+          newlyCreated.add(address);
+        }
+      }
 
-    // Compute the union of all active addresses across all finders.
-    Set<String> allActive = new HashSet<>();
-    for (Set<String> addresses : activeAddressesPerFinder.values()) {
-      allActive.addAll(addresses);
-    }
+      activeAddressesPerFinder.put(finderKey, activeAddresses);
 
-    // Evict managed endpoints not referenced by any finder.
-    List<String> stale = new ArrayList<>();
-    for (String address : endpoints.keySet()) {
-      if (!allActive.contains(address)) {
-        stale.add(address);
+      // Compute the union of all active addresses across all finders.
+      Set<String> allActive = new HashSet<>();
+      for (Set<String> addresses : activeAddressesPerFinder.values()) {
+        allActive.addAll(addresses);
+      }
+
+      // Evict managed endpoints not referenced by any finder.
+      List<String> stale = new ArrayList<>();
+      for (String address : endpoints.keySet()) {
+        if (!allActive.contains(address)) {
+          stale.add(address);
+        }
+      }
+
+      for (String address : stale) {
+        logger.log(
+            Level.FINE, "Evicting stale endpoint {0}: no longer referenced by any tablet", address);
+        evictEndpoint(address);
       }
     }
 
-    for (String address : stale) {
-      logger.log(
-          Level.FINE, "Evicting stale endpoint {0}: no longer referenced by any tablet", address);
-      evictEndpoint(address);
+    // Schedule background creation tasks AFTER computeIfAbsent has returned and the entries
+    // are visible to other threads. Submitting from inside computeIfAbsent creates a race
+    // where the scheduler thread can run before the entry is published in the map.
+    for (String address : newlyCreated) {
+      scheduler.submit(() -> createAndStartProbing(address));
+    }
+  }
+
+  /**
+   * Unregisters a finder and evicts any managed endpoints that are no longer referenced by the
+   * remaining finders.
+   */
+  void unregisterFinder(String finderKey) {
+    if (isShutdown.get() || finderKey == null || finderKey.isEmpty()) {
+      return;
+    }
+    synchronized (activeAddressLock) {
+      if (activeAddressesPerFinder.remove(finderKey) == null) {
+        return;
+      }
+
+      Set<String> allActive = new HashSet<>();
+      for (Set<String> addresses : activeAddressesPerFinder.values()) {
+        allActive.addAll(addresses);
+      }
+
+      List<String> stale = new ArrayList<>();
+      for (String address : endpoints.keySet()) {
+        if (!allActive.contains(address)) {
+          stale.add(address);
+        }
+      }
+
+      for (String address : stale) {
+        logger.log(
+            Level.FINE,
+            "Evicting stale endpoint {0}: finder {1} was unregistered",
+            new Object[] {address, finderKey});
+        evictEndpoint(address);
+      }
     }
   }
 
   /** Creates an endpoint and starts probing. Runs on the scheduler thread. */
   private void createAndStartProbing(String address) {
-    if (isShutdown.get()) {
+    if (isShutdown.get() || !endpoints.containsKey(address)) {
       return;
     }
     try {
       endpointCache.get(address);
       logger.log(Level.FINE, "Background endpoint creation completed for: {0}", address);
+
+      // If the endpoint was evicted between the containsKey check above and channel creation,
+      // the channel would leak in the endpoint cache without lifecycle tracking. Clean it up.
+      if (!endpoints.containsKey(address)) {
+        logger.log(
+            Level.FINE,
+            "Endpoint {0} was evicted during channel creation, cleaning up leaked channel",
+            address);
+        endpointCache.evict(address);
+        return;
+      }
+
       startProbing(address);
     } catch (Exception e) {
       logger.log(
           Level.FINE, "Failed to create endpoint for address: " + address + ", will retry", e);
-      // Schedule a retry after one probe interval.
-      if (!isShutdown.get()) {
+      // Schedule a retry after one probe interval, but only if still managed.
+      if (!isShutdown.get() && endpoints.containsKey(address)) {
         scheduler.schedule(
             () -> createAndStartProbing(address), probeIntervalSeconds, TimeUnit.SECONDS);
       }
@@ -245,14 +333,21 @@ class EndpointLifecycleManager {
       return;
     }
 
-    // Cancel any existing probe schedule.
-    if (state.probeFuture != null) {
-      state.probeFuture.cancel(false);
-    }
+    synchronized (state) {
+      // Re-check after acquiring lock — state may have been evicted concurrently.
+      if (!endpoints.containsKey(address)) {
+        return;
+      }
 
-    state.probeFuture =
-        scheduler.scheduleAtFixedRate(
-            () -> probe(address), 0, probeIntervalSeconds, TimeUnit.SECONDS);
+      // Cancel any existing probe schedule.
+      if (state.probeFuture != null) {
+        state.probeFuture.cancel(false);
+      }
+
+      state.probeFuture =
+          scheduler.scheduleAtFixedRate(
+              () -> probe(address), 0, probeIntervalSeconds, TimeUnit.SECONDS);
+    }
     logger.log(
         Level.FINE,
         "Prober started for endpoint {0} with interval {1}s",
@@ -262,10 +357,15 @@ class EndpointLifecycleManager {
   /** Stops probing for an endpoint. */
   private void stopProbing(String address) {
     EndpointState state = endpoints.get(address);
-    if (state != null && state.probeFuture != null) {
-      state.probeFuture.cancel(false);
-      state.probeFuture = null;
-      logger.log(Level.FINE, "Prober stopped for endpoint: {0}", address);
+    if (state == null) {
+      return;
+    }
+    synchronized (state) {
+      if (state.probeFuture != null) {
+        state.probeFuture.cancel(false);
+        state.probeFuture = null;
+        logger.log(Level.FINE, "Prober stopped for endpoint: {0}", address);
+      }
     }
   }
 
@@ -279,27 +379,30 @@ class EndpointLifecycleManager {
    * <p>If the channel is in TRANSIENT_FAILURE, increments a consecutive failure counter. After
    * {@link #MAX_TRANSIENT_FAILURE_COUNT} consecutive failures, the endpoint is evicted and shut
    * down so it can be recreated fresh when needed again.
+   *
+   * <p>All exceptions are caught to prevent {@link ScheduledExecutorService} from cancelling future
+   * runs of this task.
    */
   private void probe(String address) {
-    if (isShutdown.get()) {
-      return;
-    }
-
-    ChannelEndpoint endpoint = endpointCache.getIfPresent(address);
-    if (endpoint == null) {
-      logger.log(Level.FINE, "Probe skipped for {0}: endpoint not in cache", address);
-      return;
-    }
-
-    EndpointState state = endpoints.get(address);
-    if (state == null) {
-      return;
-    }
-
-    ManagedChannel channel = endpoint.getChannel();
-    state.lastProbeAt = clock.instant();
-
     try {
+      if (isShutdown.get()) {
+        return;
+      }
+
+      ChannelEndpoint endpoint = endpointCache.getIfPresent(address);
+      if (endpoint == null) {
+        logger.log(Level.FINE, "Probe skipped for {0}: endpoint not in cache", address);
+        return;
+      }
+
+      EndpointState state = endpoints.get(address);
+      if (state == null) {
+        return;
+      }
+
+      ManagedChannel channel = endpoint.getChannel();
+      state.lastProbeAt = clock.instant();
+
       // getState(false) reads current state without triggering a connection.
       ConnectivityState channelState = channel.getState(false);
       logger.log(
@@ -309,7 +412,6 @@ class EndpointLifecycleManager {
         case READY:
           state.lastReadyAt = clock.instant();
           state.consecutiveTransientFailures = 0;
-          logger.log(Level.FINE, "Probe for {0}: channel READY, no action needed", address);
           break;
 
         case IDLE:
@@ -321,7 +423,6 @@ class EndpointLifecycleManager {
           break;
 
         case CONNECTING:
-          logger.log(Level.FINE, "Probe for {0}: channel CONNECTING, waiting", address);
           state.consecutiveTransientFailures = 0;
           break;
 
@@ -348,17 +449,10 @@ class EndpointLifecycleManager {
           break;
 
         default:
-          logger.log(
-              Level.FINE,
-              "Probe for {0}: unrecognized channel state {1}",
-              new Object[] {address, channelState});
           break;
       }
-    } catch (UnsupportedOperationException e) {
-      logger.log(
-          Level.FINE,
-          "Probe for {0}: getState() unsupported, cannot determine channel health",
-          address);
+    } catch (Exception e) {
+      logger.log(Level.FINE, "Probe failed for endpoint " + address, e);
     }
   }
 
@@ -392,12 +486,9 @@ class EndpointLifecycleManager {
     }
   }
 
-  /** Evicts an endpoint: stops probing, shuts down the channel pool, removes from cache. */
+  /** Evicts an endpoint: stops probing, removes from tracking, shuts down the channel. */
   private void evictEndpoint(String address) {
-    logger.log(
-        Level.FINE,
-        "Evicting idle endpoint {0}: no real traffic for {1}",
-        new Object[] {address, idleEvictionDuration});
+    logger.log(Level.FINE, "Evicting endpoint {0}", address);
 
     stopProbing(address);
     endpoints.remove(address);
@@ -425,6 +516,7 @@ class EndpointLifecycleManager {
     logger.log(Level.FINE, "Recreating previously evicted endpoint for address: {0}", address);
     EndpointState state = new EndpointState(address, clock.instant());
     if (endpoints.putIfAbsent(address, state) == null) {
+      // Schedule after putIfAbsent returns so the entry is visible to the scheduler thread.
       scheduler.submit(() -> createAndStartProbing(address));
     }
   }
@@ -459,8 +551,10 @@ class EndpointLifecycleManager {
     }
 
     for (EndpointState state : endpoints.values()) {
-      if (state.probeFuture != null) {
-        state.probeFuture.cancel(false);
+      synchronized (state) {
+        if (state.probeFuture != null) {
+          state.probeFuture.cancel(false);
+        }
       }
     }
     endpoints.clear();

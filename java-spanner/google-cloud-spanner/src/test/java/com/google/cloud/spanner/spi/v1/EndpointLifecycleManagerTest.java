@@ -29,7 +29,10 @@ import java.time.ZoneId;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,6 +65,17 @@ public class EndpointLifecycleManagerTest {
     return finderId;
   }
 
+  private static void awaitCondition(String message, BooleanSupplier condition) {
+    long deadlineNanos = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
+    while (System.nanoTime() < deadlineNanos) {
+      if (condition.getAsBoolean()) {
+        return;
+      }
+      LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(10));
+    }
+    assertTrue(message, condition.getAsBoolean());
+  }
+
   @Test
   public void endpointCreationStartsProbing() throws Exception {
     KeyRangeCacheTest.FakeEndpointCache cache = new KeyRangeCacheTest.FakeEndpointCache();
@@ -70,9 +84,8 @@ public class EndpointLifecycleManagerTest {
             cache, /* probeIntervalSeconds= */ 1, Duration.ofMinutes(30), Clock.systemUTC());
 
     registerAddresses(manager, "server1");
-
-    // Wait for background creation on the scheduler thread.
-    Thread.sleep(1000);
+    awaitCondition(
+        "endpoint should be created in background", () -> cache.getIfPresent("server1") != null);
 
     // Endpoint should be created in the cache.
     assertNotNull(cache.getIfPresent("server1"));
@@ -94,8 +107,6 @@ public class EndpointLifecycleManagerTest {
     // Re-register with the same finder ID — should not create duplicate state.
     manager.updateActiveAddresses(finderId, Collections.singleton("server1"));
     manager.updateActiveAddresses(finderId, Collections.singleton("server1"));
-
-    Thread.sleep(300);
 
     assertEquals(1, manager.managedEndpointCount());
   }
@@ -123,7 +134,12 @@ public class EndpointLifecycleManagerTest {
 
     Instant creationTime = clock.instant();
     registerAddresses(manager, "server1");
-    Thread.sleep(300);
+    awaitCondition(
+        "probe should run after background endpoint creation",
+        () -> {
+          EndpointLifecycleManager.EndpointState state = manager.getEndpointState("server1");
+          return state != null && state.lastProbeAt != null;
+        });
 
     // Probe traffic should not change lastRealTrafficAt.
     EndpointLifecycleManager.EndpointState state = manager.getEndpointState("server1");
@@ -140,7 +156,6 @@ public class EndpointLifecycleManagerTest {
             cache, /* probeIntervalSeconds= */ 60, Duration.ofMinutes(30), clock);
 
     registerAddresses(manager, "server1");
-    Thread.sleep(300);
 
     Instant before = clock.instant();
     clock.advance(Duration.ofMinutes(5));
@@ -160,7 +175,8 @@ public class EndpointLifecycleManagerTest {
         new EndpointLifecycleManager(cache, /* probeIntervalSeconds= */ 60, idleDuration, clock);
 
     registerAddresses(manager, "server1");
-    Thread.sleep(300);
+    awaitCondition(
+        "endpoint should be created in background", () -> cache.getIfPresent("server1") != null);
 
     assertTrue(manager.isManaged("server1"));
 
@@ -185,7 +201,6 @@ public class EndpointLifecycleManagerTest {
         new EndpointLifecycleManager(cache, /* probeIntervalSeconds= */ 60, idleDuration, clock);
 
     registerAddresses(manager, "server1");
-    Thread.sleep(300);
 
     // Record real traffic at 20 minutes.
     clock.advance(Duration.ofMinutes(20));
@@ -208,7 +223,8 @@ public class EndpointLifecycleManagerTest {
         new EndpointLifecycleManager(cache, /* probeIntervalSeconds= */ 60, idleDuration, clock);
 
     registerAddresses(manager, "server1");
-    Thread.sleep(300);
+    awaitCondition(
+        "endpoint should be created in background", () -> cache.getIfPresent("server1") != null);
 
     // Evict.
     clock.advance(Duration.ofMinutes(31));
@@ -217,7 +233,8 @@ public class EndpointLifecycleManagerTest {
 
     // Recreate.
     manager.requestEndpointRecreation("server1");
-    Thread.sleep(500);
+    awaitCondition(
+        "endpoint should be recreated in background", () -> cache.getIfPresent("server1") != null);
 
     assertTrue(manager.isManaged("server1"));
     assertNotNull(cache.getIfPresent("server1"));
@@ -231,7 +248,6 @@ public class EndpointLifecycleManagerTest {
             cache, /* probeIntervalSeconds= */ 1, Duration.ofMinutes(30), Clock.systemUTC());
 
     registerAddresses(manager, "server1", "server2");
-    Thread.sleep(300);
 
     assertEquals(2, manager.managedEndpointCount());
 
@@ -275,7 +291,6 @@ public class EndpointLifecycleManagerTest {
 
     // Finder 1 reports server1 and server2.
     String finder1 = registerAddresses(manager, "server1", "server2");
-    Thread.sleep(300);
     assertEquals(2, manager.managedEndpointCount());
 
     // Finder 1 updates: server1 is gone, only server2 remains.
@@ -297,8 +312,7 @@ public class EndpointLifecycleManagerTest {
     // Finder 1 reports server1.
     String finder1 = registerAddresses(manager, "server1");
     // Finder 2 also reports server1.
-    String finder2 = registerAddresses(manager, "server1");
-    Thread.sleep(300);
+    registerAddresses(manager, "server1");
 
     // Finder 1 drops server1, but finder 2 still references it.
     manager.updateActiveAddresses(finder1, Collections.emptySet());
@@ -316,7 +330,6 @@ public class EndpointLifecycleManagerTest {
 
     String finder1 = registerAddresses(manager, "server1");
     String finder2 = registerAddresses(manager, "server2");
-    Thread.sleep(300);
 
     manager.unregisterFinder(finder1);
 
